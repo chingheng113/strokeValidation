@@ -35,19 +35,34 @@ def load_all(fn):
     read_file_path = get_file_path(fn)
     df = pd.read_csv(read_file_path, encoding='utf8')
     # sampling
-    # df = df.groupby('discharged_mrs', group_keys=False).apply(lambda x: x.sample(300))
-    return df.sample(frac=1)
+    # df = df.groupby('discharged_mrs', group_keys=False).apply(lambda x: x.sample(300)).sample(frac=1)
+    return df
 
 
-def get_tsr(target):
-    df = load_all('tsr_mbn.csv')
+def get_tsr(target, subtype):
+    if subtype == 'is':
+        df = get_ischemic('TSR.csv')
+    elif subtype == 'he':
+        df = get_hemorrhagic('TSR.csv')
+    else:
+        df = load_all('TSR.csv')
     if target != '':
         df = df[df['discharged_mrs'] == target]
-    id_df = df.iloc[:, 0:2]
-    bi_df = df.iloc[:, 2:12]
-    mrs_df = df.iloc[:, 12:13]
-    nih_df = df.iloc[:, 13:]
+    id_df = df.iloc[:, 0:1]
+    bi_df = df.iloc[:, 4:14]
+    mrs_df = df.iloc[:, 14:15]
+    nih_df = df.iloc[:, 15:26]
     return id_df, bi_df, mrs_df, nih_df
+
+
+def get_ischemic(fn):
+    df = load_all(fn)
+    return df[(df['ICD_ID_1.0'] == 1) | (df['ICD_ID_2.0'] == 1)]
+
+
+def get_hemorrhagic(fn):
+    df = load_all(fn)
+    return df[(df['ICD_ID_3.0'] == 1) | (df['ICD_ID_4.0'] == 1)]
 
 
 def scale(x_data):
