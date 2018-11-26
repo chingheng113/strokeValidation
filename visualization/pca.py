@@ -20,7 +20,7 @@ def do_pca(data, labels):
     plt.scatter(transformed_data[:, 0], transformed_data[:, 1], c=labels.values.ravel(),
                 cmap=plt.cm.nipy_spectral, edgecolor='k', alpha=0.5)
     plt.xlabel('component 1')
-    plt.ylabel('component 2')
+    plt.ylabel('ylabelcomponent 2')
     plt.show()
 
 

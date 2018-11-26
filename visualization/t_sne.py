@@ -5,10 +5,8 @@ import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
 
 
-
-
-id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr()
-t_sne = TSNE(n_components=2, perplexity=30).fit_transform(nih_df)
+id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr('', 'all')
+t_sne = TSNE(n_components=2, perplexity=40).fit_transform(bi_df)
 result = np.concatenate([t_sne, mrs_df], axis=1)
 df_result = pd.DataFrame(result, columns=['x', 'y']+list(mrs_df.columns.values))
 data_utils.save_dataframe_to_csv(df_result, 'tSNE')

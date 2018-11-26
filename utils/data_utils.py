@@ -49,9 +49,9 @@ def get_tsr(target, subtype):
     if target != '':
         df = df[df['discharged_mrs'] == target]
     id_df = df.iloc[:, 0:1]
-    bi_df = df.iloc[:, 4:14]
+    bi_df = df.iloc[:, 3:13]
     mrs_df = df.iloc[:, 14:15]
-    nih_df = df.iloc[:, 15:26]
+    nih_df = df.iloc[:, 15:30]
     return id_df, bi_df, mrs_df, nih_df
 
 
