@@ -10,13 +10,13 @@ def do_pca(data, labels):
     pca = decomposition.PCA(n_components=2)
     data = scale(data)
     pca.fit(data)
-    '''
     # Variance explains
     va = pca.explained_variance_ratio_
     print(va)
     # Cumulative Variance explains
     va1 = np.cumsum(np.round(pca.explained_variance_ratio_, decimals=4)*100)
     print(va1)
+    '''
     plt.plot(va1)
     '''
     transformed_data = pca.transform(data)
@@ -30,6 +30,7 @@ def do_pca(data, labels):
 
 
 if __name__ == '__main__':
-    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(5, 'is')
-    # bi_df = data_utils.scale(bi_df)
+    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(0, 'is')
+    bi_df = bi_df.drop_duplicates()
+    mrs_df = mrs_df.loc[bi_df.index]
     do_pca(bi_df, mrs_df)

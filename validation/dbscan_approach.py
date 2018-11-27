@@ -6,12 +6,21 @@ from sklearn.neighbors import DistanceMetric
 import ddbscan
 from sklearn.datasets.samples_generator import make_blobs
 from sklearn.preprocessing import StandardScaler
+from sklearn import decomposition
+from sklearn.preprocessing import scale
 
 
-def dbscan_validation(X):
-    mSample = round(X.shape[0]/10, 0)
+def pca_reduction(data):
+    pca = decomposition.PCA(n_components=2)
+    data = scale(data)
+    pca.fit(data)
+    transformed_data = pca.transform(data)
+    return transformed_data
+
+
+def dbscan_validation(X, eps, mSample):
     # cosine
-    db = DBSCAN(eps=4, min_samples=mSample, metric='euclidean').fit(X)
+    db = DBSCAN(eps=eps, min_samples=mSample, metric='euclidean').fit(X)
     core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
     core_samples_mask[db.core_sample_indices_] = True
     labels = db.labels_
@@ -53,10 +62,10 @@ def ddbscan_validation(X):
 
 
 if __name__ == '__main__':
-    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr()
-    mrs_target = 0
-    # bi_mrs = bi_df[mrs_df['discharged_mrs'] == mrs_target]
-    # bi_mrs = data_utils.scale(bi_mrs)
-    core_samples_mask, n_clusters, labels = dbscan_validation(bi_df)
-    figure_plot.dbscan_plot(bi_df.values, core_samples_mask, n_clusters, labels)
+    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(0, 'is')
+    bi_df = bi_df.drop_duplicates()
+    bi_df = pca_reduction(bi_df)
+    mSample = round(bi_df.shape[0]/10, 0)
+    core_samples_mask, n_clusters, labels = dbscan_validation(bi_df, 1, mSample)
+    figure_plot.dbscan_plot(bi_df, core_samples_mask, n_clusters, labels)
     print('done')
