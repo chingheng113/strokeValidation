@@ -27,7 +27,7 @@ def dbscan_validation(X, eps, mSample):
     # Number of clusters in labels, ignoring noise if present.
     n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
     print('Estimated number of clusters: %d' % n_clusters_)
-    print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, labels))
+    # print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, labels))
     return core_samples_mask, n_clusters_, labels
 
 
@@ -62,10 +62,10 @@ def ddbscan_validation(X):
 
 
 if __name__ == '__main__':
-    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(0, 'is')
+    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(4, 'is')
     bi_df = bi_df.drop_duplicates()
     bi_df = pca_reduction(bi_df)
     mSample = round(bi_df.shape[0]/10, 0)
-    core_samples_mask, n_clusters, labels = dbscan_validation(bi_df, 2, mSample)
+    core_samples_mask, n_clusters, labels = dbscan_validation(bi_df, 2.0, 7)
     figure_plot.dbscan_plot(bi_df, core_samples_mask, n_clusters, labels)
     print('done')

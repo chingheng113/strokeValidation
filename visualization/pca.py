@@ -26,11 +26,12 @@ def do_pca(data, labels):
                 cmap=plt.cm.nipy_spectral, edgecolor='k', alpha=0.5)
     plt.xlabel('component 1')
     plt.ylabel('component 2')
+    plt.title('mRS = '+ str(labels.iloc[0].values[0]))
     plt.show()
 
 
 if __name__ == '__main__':
-    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(0, 'is')
-    bi_df = bi_df.drop_duplicates()
+    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(4, 'is')
+    # bi_df = bi_df.drop_duplicates()
     mrs_df = mrs_df.loc[bi_df.index]
     do_pca(bi_df, mrs_df)
