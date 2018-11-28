@@ -66,6 +66,6 @@ if __name__ == '__main__':
     bi_df = bi_df.drop_duplicates()
     bi_df = pca_reduction(bi_df)
     mSample = round(bi_df.shape[0]/10, 0)
-    core_samples_mask, n_clusters, labels = dbscan_validation(bi_df, 1, mSample)
+    core_samples_mask, n_clusters, labels = dbscan_validation(bi_df, 2, mSample)
     figure_plot.dbscan_plot(bi_df, core_samples_mask, n_clusters, labels)
     print('done')
