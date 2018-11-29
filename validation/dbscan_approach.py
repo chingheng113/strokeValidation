@@ -62,10 +62,11 @@ def ddbscan_validation(X):
 
 
 if __name__ == '__main__':
-    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(4, 'is')
+    mrs = 5
+    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df = bi_df.drop_duplicates()
     bi_df = pca_reduction(bi_df)
     mSample = round(bi_df.shape[0]/10, 0)
-    core_samples_mask, n_clusters, labels = dbscan_validation(bi_df, 2.0, 7)
-    figure_plot.dbscan_plot(bi_df, core_samples_mask, n_clusters, labels)
+    core_samples_mask, n_clusters, labels = dbscan_validation(bi_df, 0.5, 11)
+    figure_plot.dbscan_plot(mrs, bi_df, core_samples_mask, n_clusters, labels)
     print('done')
