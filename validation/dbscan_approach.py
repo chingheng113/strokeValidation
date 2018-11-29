@@ -8,14 +8,16 @@ from sklearn.datasets.samples_generator import make_blobs
 from sklearn.preprocessing import StandardScaler
 from sklearn import decomposition
 from sklearn.preprocessing import scale
+import pandas as pd
 
 
 def pca_reduction(data):
     pca = decomposition.PCA(n_components=2)
-    data = scale(data)
-    pca.fit(data)
-    transformed_data = pca.transform(data)
-    return transformed_data
+    scaled_data = scale(data)
+    pca.fit(scaled_data)
+    transformed_data = pca.transform(scaled_data)
+    df_pca = pd.DataFrame(transformed_data, columns=['pca_1', 'pca_2'], index=data.index)
+    return df_pca
 
 
 def dbscan_validation(X, eps, mSample):
@@ -27,46 +29,55 @@ def dbscan_validation(X, eps, mSample):
     # Number of clusters in labels, ignoring noise if present.
     n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
     print('Estimated number of clusters: %d' % n_clusters_)
-    # print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, labels))
+    print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, labels))
+    print("Calinski-Harabaz Index: %0.3f" % metrics.calinski_harabaz_score(X, labels))
     return core_samples_mask, n_clusters_, labels
 
 
-def ddbscan_validation(X):
-    # https://github.com/cloudwalkio/ddbscan
-    mSample = round(X.shape[0]/10, 0)
-    scan = ddbscan.DDBSCAN(10, mSample)
-    # Add points to model
-    for index, row in X.iterrows():
-        scan.add_point(point=row.tolist(), count=1, desc="")
+def label_data(bi_df_reduced, id_df, labels):
+    id_bi_df = pd.concat([id_df.loc[bi_df_reduced.index], bi_df_reduced], axis=1)
+    id_bi_df['clust'] = labels
+    a = id_bi_df[id_bi_df['clust'] == -1]
+    print(a.shape[0])
+    return id_bi_df
 
-    # Compute clusters
-    scan.compute()
-    print(X.shape[0])
-    print('Clusters found and its members points index:')
-    cluster_number = 0
-    for cluster in scan.clusters:
-        print ('=== Cluster %d ===' % cluster_number)
-        print('Size:', len(cluster))
-        print ('Cluster points index: %s' % list(cluster))
-        cluster_number += 1
-
-    # print ('\nCluster assigned to each point:')
-    # for i in range(len(scan.points)):
-    #     print ('=== Point: %s ===' % scan.points[i])
-    #     print ('Cluster: %2d' % scan.points_data[i].cluster,)
-    #     # If a point cluster is -1, it's an anomaly
-    #     if scan.points_data[i].cluster == -1:
-    #         print ('\t <== Anomaly found!')
-    #     else:
-    #         print()
+# def ddbscan_validation(X):
+#     # https://github.com/cloudwalkio/ddbscan
+#     mSample = round(X.shape[0]/10, 0)
+#     scan = ddbscan.DDBSCAN(10, mSample)
+#     # Add points to model
+#     for index, row in X.iterrows():
+#         scan.add_point(point=row.tolist(), count=1, desc="")
+#
+#     # Compute clusters
+#     scan.compute()
+#     print(X.shape[0])
+#     print('Clusters found and its members points index:')
+#     cluster_number = 0
+#     for cluster in scan.clusters:
+#         print ('=== Cluster %d ===' % cluster_number)
+#         print('Size:', len(cluster))
+#         print ('Cluster points index: %s' % list(cluster))
+#         cluster_number += 1
+#
+#     print ('\nCluster assigned to each point:')
+#     for i in range(len(scan.points)):
+#         print ('=== Point: %s ===' % scan.points[i])
+#         print ('Cluster: %2d' % scan.points_data[i].cluster,)
+#         # If a point cluster is -1, it's an anomaly
+#         if scan.points_data[i].cluster == -1:
+#             print ('\t <== Anomaly found!')
+#         else:
+#             print()
 
 
 if __name__ == '__main__':
     mrs = 5
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
-    bi_df = bi_df.drop_duplicates()
-    bi_df = pca_reduction(bi_df)
-    mSample = round(bi_df.shape[0]/10, 0)
-    core_samples_mask, n_clusters, labels = dbscan_validation(bi_df, 0.5, 11)
-    figure_plot.dbscan_plot(mrs, bi_df, core_samples_mask, n_clusters, labels)
+    # bi_df_unique = bi_df.drop_duplicates()
+    bi_df_reduced = pca_reduction(bi_df)
+    # mSample = round(bi_df.shape[0]/10, 0)
+    core_samples_mask, n_clusters, labels = dbscan_validation(bi_df_reduced, .5, 11)
+    label_data(bi_df_reduced, id_df, labels)
+    figure_plot.dbscan_plot(mrs, bi_df_reduced.values, core_samples_mask, n_clusters, labels)
     print('done')
