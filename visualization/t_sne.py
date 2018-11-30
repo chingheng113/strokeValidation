@@ -7,7 +7,7 @@ from sklearn.manifold import TSNE
 
 id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr('', 'is')
 # remove duplicate
-bi_df = bi_df.drop_duplicates()
+# bi_df = bi_df.drop_duplicates()
 mrs_df = mrs_df.loc[bi_df.index]
 #
 t_sne = TSNE(n_components=2, perplexity=30).fit_transform(bi_df)

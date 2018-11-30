@@ -1,11 +1,8 @@
 import numpy as np
-from utils import data_utils, figure_plot
+from utils import data_utils
+import matplotlib.pyplot as plt
 from sklearn.cluster import DBSCAN
 from sklearn import metrics
-from sklearn.neighbors import DistanceMetric
-import ddbscan
-from sklearn.datasets.samples_generator import make_blobs
-from sklearn.preprocessing import StandardScaler
 from sklearn import decomposition
 from sklearn.preprocessing import scale
 import pandas as pd
@@ -41,43 +38,37 @@ def label_data(bi_df_reduced, id_df, labels):
     print(a.shape[0])
     return id_bi_df
 
-# def ddbscan_validation(X):
-#     # https://github.com/cloudwalkio/ddbscan
-#     mSample = round(X.shape[0]/10, 0)
-#     scan = ddbscan.DDBSCAN(10, mSample)
-#     # Add points to model
-#     for index, row in X.iterrows():
-#         scan.add_point(point=row.tolist(), count=1, desc="")
-#
-#     # Compute clusters
-#     scan.compute()
-#     print(X.shape[0])
-#     print('Clusters found and its members points index:')
-#     cluster_number = 0
-#     for cluster in scan.clusters:
-#         print ('=== Cluster %d ===' % cluster_number)
-#         print('Size:', len(cluster))
-#         print ('Cluster points index: %s' % list(cluster))
-#         cluster_number += 1
-#
-#     print ('\nCluster assigned to each point:')
-#     for i in range(len(scan.points)):
-#         print ('=== Point: %s ===' % scan.points[i])
-#         print ('Cluster: %2d' % scan.points_data[i].cluster,)
-#         # If a point cluster is -1, it's an anomaly
-#         if scan.points_data[i].cluster == -1:
-#             print ('\t <== Anomaly found!')
-#         else:
-#             print()
+def dbscan_plot(num, X, core_samples_mask, n_clusters_, labels):
+    unique_labels = set(labels)
+    colors = [plt.cm.Spectral(each)
+              for each in np.linspace(0, 1, len(unique_labels))]
+    for k, col in zip(unique_labels, colors):
+        if k == -1:
+            # Black used for noise.
+            col = [0, 0, 0, 1]
+
+        class_member_mask = (labels == k)
+
+        xy = X[class_member_mask & core_samples_mask]
+        plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col),
+                 markeredgecolor='k', markersize=7)
+
+        xy = X[class_member_mask & ~core_samples_mask]
+        plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=tuple(col),
+                 markeredgecolor='k', markersize=3)
+    plt.title(
+        'mRS = '+ str(num)+'\n'+
+        'Estimated number of clusters: %d' % n_clusters_)
+    plt.show()
 
 
 if __name__ == '__main__':
     mrs = 5
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
-    # bi_df_unique = bi_df.drop_duplicates()
-    bi_df_reduced = pca_reduction(bi_df)
+    bi_df_unique = bi_df.drop_duplicates()
+    bi_df_reduced = pca_reduction(bi_df_unique)
     # mSample = round(bi_df.shape[0]/10, 0)
-    core_samples_mask, n_clusters, labels = dbscan_validation(bi_df_reduced, .5, 11)
+    core_samples_mask, n_clusters, labels = dbscan_validation(bi_df_reduced, 1, 11)
     label_data(bi_df_reduced, id_df, labels)
-    figure_plot.dbscan_plot(mrs, bi_df_reduced.values, core_samples_mask, n_clusters, labels)
+    dbscan_plot(mrs, bi_df_reduced.values, core_samples_mask, n_clusters, labels)
     print('done')
