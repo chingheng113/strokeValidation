@@ -60,16 +60,18 @@ def dbscan_plot2(X, outliers):
     class_member_mask = (labels == -1)
     outliers = X.iloc[class_member_mask]
     plt.scatter(outliers[['pca_1']], outliers[['pca_2']], s=50, linewidth=0, c='black', alpha=1)
+    # plt.scatter(-2.60251, 1.35159, s=50, linewidth=0, c='yellow', alpha=1)
+
     plt.show()
 
 
 if __name__ == '__main__':
-    mrs = 5
+    mrs = 0
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_reduced = data_utils.pca_reduction(bi_df_unique)
-    # mSample = round(bi_df.shape[0]/10, 0)
-    core_samples_mask, n_clusters, labels = dbscan_validation(bi_df_reduced, 0.55, 11)
+    mSample = round(bi_df_reduced.shape[0]*0.025, 0)
+    core_samples_mask, n_clusters, labels = dbscan_validation(bi_df_reduced, 1.5, mSample)
     outlier = outlier_detection(bi_df_reduced, labels)
     data_utils.label_data(bi_df_unique, id_df, outlier, 'dbscan_outlier')
     # dbscan_plot(mrs, bi_df_reduced.values, core_samples_mask, n_clusters, labels)

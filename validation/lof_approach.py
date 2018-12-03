@@ -8,11 +8,11 @@ from scipy import stats
 
 def lof_validation(X):
     outliers_fraction = 0.1
-    clf = LocalOutlierFactor(n_neighbors=30, contamination=outliers_fraction)
+    clf = LocalOutlierFactor(n_neighbors=11, contamination=outliers_fraction)
     y_pred = clf.fit_predict(X)
     X_scores = clf.negative_outlier_factor_
     # threshold methods
-    threshold = pd.Series(X_scores).quantile(0.1) # while outliers tend to have a larger LOF score.
+    threshold = pd.Series(X_scores).quantile(0.025) # while outliers tend to have a larger LOF score.
     outlier_inx = np.where(X_scores < threshold)[0]
     outliers = X.iloc[outlier_inx]
 
