@@ -1,4 +1,4 @@
-IDCASE_ID,onset_age,GENDER_TX,Feeding,Transfers,Bathing,Toilet_use,Grooming,Mobility,Stairs,Dressing,Bowel_control,Bladder_control,Barthel_Total,discharged_mrs,NIHS_1a_out,NIHS_1b_out,NIHS_1c_out,NIHS_2_out,NIHS_3_out,NIHS_4_out,NIHS_5aL_out,NIHS_5bR_out,NIHS_6aL_out,NIHS_6bR_out,NIHS_7_out,NIHS_8_out,NIHS_9_out,NIHS_10_out,NIHS_11_out,NIHSS_Total,Discharge..Primary.Diagnosis
+CASE_ID,onset_age,GENDER_TX,Feeding,Transfers,Bathing,Toilet_use,Grooming,Mobility,Stairs,Dressing,Bowel_control,Bladder_control,Barthel_Total,discharged_mrs,NIHS_1a_out,NIHS_1b_out,NIHS_1c_out,NIHS_2_out,NIHS_3_out,NIHS_4_out,NIHS_5aL_out,NIHS_5bR_out,NIHS_6aL_out,NIHS_6bR_out,NIHS_7_out,NIHS_8_out,NIHS_9_out,NIHS_10_out,NIHS_11_out,NIHSS_Total,Discharge..Primary.Diagnosis
 2027,100,M,10,15,5,10,5,10,5,5,10,10,85,4,0,2,0,0,0,1,0,1,0,1,0,1,3,2,0,11,Ischemic Stroke
 4705,73,M,5,0,0,0,0,0,0,0,0,0,5,5,0,2,1,0,2,2,0,4,0,3,0,1,3,2,2,22,Ischemic Stroke
 8017,46,M,10,15,5,10,5,10,10,10,10,10,95,1,0,0,0,0,0,1,0,0,0,0,1,1,0,0,0,3,Ischemic Stroke

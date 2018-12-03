@@ -12,13 +12,13 @@ def lof_validation(X):
     y_pred = clf.fit_predict(X)
     X_scores = clf.negative_outlier_factor_
     # threshold methods
-    # threshold = pd.Series(X_scores).quantile(0.1) # while outliers tend to have a larger LOF score.
-    # outlier_inx = np.where(X_scores < threshold)[0]
-    # outliers = X.iloc[outlier_inx]
+    threshold = pd.Series(X_scores).quantile(0.1) # while outliers tend to have a larger LOF score.
+    outlier_inx = np.where(X_scores < threshold)[0]
+    outliers = X.iloc[outlier_inx]
 
     # default methods
-    labels = clf.fit_predict(X)
-    outliers = X[labels==-1]
+    # labels = clf.fit_predict(X)
+    # outliers = X[labels==-1]
 
     return clf, outliers
 
@@ -33,21 +33,12 @@ def plot_lof(X, outliers):
     plt.show()
 
 
-def label_data(bi_df, id_df, labels):
-    id_bi_df = pd.concat([id_df.loc[bi_df.index], bi_df], axis=1)
-    id_bi_df['clust'] = labels
-    a = id_bi_df[id_bi_df['clust'] == -1]
-    print(a.shape[0])
-    data_utils.save_dataframe_to_csv(a, 'lof_outliers')
-    return id_bi_df
-
-
 if __name__ == '__main__':
     mrs = 5
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_reduced = data_utils.pca_reduction(bi_df_unique)
     clf, outliers = lof_validation(bi_df_reduced)
-    label_data(bi_df_reduced, id_df, clf.fit_predict(bi_df_reduced))
+    data_utils.label_data(bi_df_unique, id_df, outliers, 'lof_outlier')
     plot_lof(bi_df_reduced, outliers)
     print('done')

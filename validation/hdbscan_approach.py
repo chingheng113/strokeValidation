@@ -9,15 +9,6 @@ import seaborn as sns
 # https://hdbscan.readthedocs.io/en/latest/prediction_tutorial.html
 
 
-def label_data(bi_df, id_df, clusterer):
-    id_bi_df = pd.concat([id_df.loc[bi_df.index], bi_df], axis=1)
-    id_bi_df['clust'] = clusterer.labels_
-    a = id_bi_df[id_bi_df['clust'] == -1]
-    print(a.shape[0])
-    data_utils.save_dataframe_to_csv(a, 'hdbscan_outliers')
-    return id_bi_df
-
-
 def hdbscan_validation(X):
     clusterer = hdbscan.HDBSCAN(min_cluster_size=11, allow_single_cluster=True).fit(X)
     return clusterer
@@ -51,6 +42,6 @@ if __name__ == '__main__':
     bi_df_reduced = data_utils.pca_reduction(bi_df_unique)
     clusterer = hdbscan_validation(bi_df_reduced)
     outliers = outlier_detection(bi_df_reduced, clusterer)
-    label_data(bi_df_reduced, id_df, clusterer)
+    data_utils.label_data(bi_df_unique, id_df, outliers, 'hdbscan_outlier')
     plot_hdbscan(bi_df_reduced, outliers)
     print('done')

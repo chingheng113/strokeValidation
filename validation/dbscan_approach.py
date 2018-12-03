@@ -21,13 +21,11 @@ def dbscan_validation(X, eps, mSample):
     return core_samples_mask, n_clusters_, labels
 
 
-def label_data(bi_df, id_df, labels):
-    id_bi_df = pd.concat([id_df.loc[bi_df.index], bi_df], axis=1)
-    id_bi_df['clust'] = labels
-    a = id_bi_df[id_bi_df['clust'] == -1]
-    print(a.shape[0])
-    data_utils.save_dataframe_to_csv(a, 'dbscan_outliers')
-    return id_bi_df
+def outlier_detection(X, labels):
+    X['clust'] = labels
+    outliers = X[X['clust'] == -1]
+    print(outliers.shape[0])
+    return outliers
 
 
 def dbscan_plot(num, X, core_samples_mask, n_clusters_, labels):
@@ -72,7 +70,8 @@ if __name__ == '__main__':
     bi_df_reduced = data_utils.pca_reduction(bi_df_unique)
     # mSample = round(bi_df.shape[0]/10, 0)
     core_samples_mask, n_clusters, labels = dbscan_validation(bi_df_reduced, 0.55, 11)
-    label_data(bi_df_reduced, id_df, labels)
+    outlier = outlier_detection(bi_df_reduced, labels)
+    data_utils.label_data(bi_df_unique, id_df, outlier, 'dbscan_outlier')
     # dbscan_plot(mrs, bi_df_reduced.values, core_samples_mask, n_clusters, labels)
     dbscan_plot2(bi_df_reduced, labels)
     print('done')

@@ -72,6 +72,7 @@ def scale(x_data):
     scaled_df = pd.DataFrame(scaled_data, index=x_data.index, columns=x_data.columns)
     return scaled_df
 
+
 def pca_reduction(data):
     pca = decomposition.PCA(n_components=2)
     scaled_data = scale(data)
@@ -80,6 +81,15 @@ def pca_reduction(data):
     df_pca = pd.DataFrame(transformed_data, columns=['pca_1', 'pca_2'], index=data.index)
     return df_pca
 
+
+def label_data(df, id_df, outliers, fn):
+    id_bi_df = pd.concat([id_df.loc[df.index], df], axis=1)
+    id_bi_df['clust'] = 1
+    id_bi_df.clust[outliers.index] = -1
+    only_outlier = id_bi_df[id_bi_df['clust'] == -1]
+    print(only_outlier.shape[0])
+    save_dataframe_to_csv(only_outlier, fn)
+    return id_bi_df
 
 if __name__ == '__main__':
 
