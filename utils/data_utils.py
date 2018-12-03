@@ -3,6 +3,7 @@ import csv
 import pandas as pd
 import numpy as np
 from sklearn import preprocessing as sp
+from sklearn import decomposition
 
 
 
@@ -70,6 +71,14 @@ def scale(x_data):
     scaled_data = np.round(sp.StandardScaler().fit_transform(x_data), 3)
     scaled_df = pd.DataFrame(scaled_data, index=x_data.index, columns=x_data.columns)
     return scaled_df
+
+def pca_reduction(data):
+    pca = decomposition.PCA(n_components=2)
+    scaled_data = scale(data)
+    pca.fit(scaled_data)
+    transformed_data = pca.transform(scaled_data)
+    df_pca = pd.DataFrame(transformed_data, columns=['pca_1', 'pca_2'], index=data.index)
+    return df_pca
 
 
 if __name__ == '__main__':
