@@ -18,12 +18,11 @@ def dbscan_validation(X, eps, mSample):
     print('Estimated number of clusters: %d' % n_clusters_)
     print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, labels))
     print("Calinski-Harabaz Index: %0.3f" % metrics.calinski_harabaz_score(X, labels))
-    return core_samples_mask, n_clusters_, labels
+    return db, labels, core_samples_mask, n_clusters_
 
 
-def outlier_detection(X, labels):
-    X['clust'] = labels
-    outliers = X[X['clust'] == -1]
+def outlier_filter(X, labels):
+    outliers = X[labels == -1]
     print(outliers.shape[0])
     return outliers
 
@@ -64,16 +63,17 @@ def dbscan_plot2(X, outliers_inx):
 
 
 if __name__ == '__main__':
-    mrs = 2
+    mrs = 5
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
-    bi_df_reduced = data_utils.pca_reduction(bi_df_unique)
+    bi_df_pca = data_utils.pca_reduction(bi_df)
 
     # mSample = round(bi_df_reduced.shape[0]*0.025, 0)
-    core_samples_mask, n_clusters, labels = dbscan_validation(data_utils.scale(bi_df_unique), 2.1, 11)
+    # db, labels, core_samples_mask, n_clusters_ = dbscan_validation(data_utils.scale(bi_df_unique), 0.55, 11)
+    db, labels, core_samples_mask, n_clusters_ = dbscan_validation(bi_df_pca.drop_duplicates(), 1.3, 11)
 
-    outliers = outlier_detection(bi_df_reduced, labels)
+    outliers = outlier_filter(bi_df_unique, labels)
     data_utils.label_data(bi_df_unique, id_df, outliers, 'dbscan_outlier')
     # dbscan_plot(mrs, bi_df_reduced.values, core_samples_mask, n_clusters, labels)
-    dbscan_plot2(bi_df_reduced, outliers.index)
+    dbscan_plot2(bi_df_pca.drop_duplicates(), outliers.index)
     print('done')

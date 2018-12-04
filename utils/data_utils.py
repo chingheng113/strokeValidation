@@ -66,6 +66,11 @@ def get_hemorrhagic(fn):
     return df[(df['ICD_ID_3.0'] == 1) | (df['ICD_ID_4.0'] == 1)]
 
 
+def get_nih():
+    df = load_all('NIH.csv')
+    return df
+
+
 def scale(x_data):
     # scaled_data = np.round(sp.MinMaxScaler(feature_range=(0, 1)).fit_transform(x_data), 3)
     scaled_data = np.round(sp.StandardScaler().fit_transform(x_data), 3)
