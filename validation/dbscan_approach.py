@@ -53,27 +53,27 @@ def dbscan_plot(num, X, core_samples_mask, n_clusters_, labels):
     plt.show()
 
 
-def dbscan_plot2(X, outliers):
+def dbscan_plot2(X, outliers_inx):
     plt.scatter(X[['pca_1']], X[['pca_2']], c='red',
                 cmap=plt.cm.nipy_spectral, edgecolor='k')
-
-    class_member_mask = (labels == -1)
-    outliers = X.iloc[class_member_mask]
-    plt.scatter(outliers[['pca_1']], outliers[['pca_2']], s=50, linewidth=0, c='black', alpha=1)
+    os = X.loc[outliers_inx]
+    plt.scatter(os[['pca_1']], os[['pca_2']], s=50, linewidth=0, c='black', alpha=1)
     # plt.scatter(-2.60251, 1.35159, s=50, linewidth=0, c='yellow', alpha=1)
 
     plt.show()
 
 
 if __name__ == '__main__':
-    mrs = 0
+    mrs = 2
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_reduced = data_utils.pca_reduction(bi_df_unique)
-    mSample = round(bi_df_reduced.shape[0]*0.025, 0)
-    core_samples_mask, n_clusters, labels = dbscan_validation(bi_df_reduced, 1.5, mSample)
-    outlier = outlier_detection(bi_df_reduced, labels)
-    data_utils.label_data(bi_df_unique, id_df, outlier, 'dbscan_outlier')
+
+    # mSample = round(bi_df_reduced.shape[0]*0.025, 0)
+    core_samples_mask, n_clusters, labels = dbscan_validation(data_utils.scale(bi_df_unique), 2.1, 11)
+
+    outliers = outlier_detection(bi_df_reduced, labels)
+    data_utils.label_data(bi_df_unique, id_df, outliers, 'dbscan_outlier')
     # dbscan_plot(mrs, bi_df_reduced.values, core_samples_mask, n_clusters, labels)
-    dbscan_plot2(bi_df_reduced, labels)
+    dbscan_plot2(bi_df_reduced, outliers.index)
     print('done')
