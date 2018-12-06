@@ -22,8 +22,21 @@ def basic_filter(df):
     print(df.shape)
     return df
 
-#def mix_data(df_base, df_add_1, df_add_2):
 
+def get_id_bi_data(df):
+    id_df = df['CASE_ID']
+    bi_df = df[['Feeding', 'Transfers', 'Bathing', 'Toilet_use', 'Grooming', 'Mobility', 'Stairs', 'Dressing', 'Bowel_control', 'Bladder_control']]
+    return id_df, bi_df
+
+
+def mix_bi_data(df_base, df_add_1, df_add_2):
+    id_df_based, bi_df_based = get_id_bi_data(df_base)
+    id_df_add_1, bi_df_add_1 = get_id_bi_data(df_add_1)
+    add_1_label = pd.DataFrame(index=df_add_1.index, columns=['label'])
+    for index_unique, row in bi_df_add_1.iterrows():
+        s = bi_df_based.values
+        a = np.where(row.values == s)
+        print(a)
 
 if __name__ == '__main__':
     nih_df = data_utils.get_nih()
@@ -41,7 +54,7 @@ if __name__ == '__main__':
     nih_df_5 = nih_df_clean[nih_df_clean['discharged_mrs'] == 5]
     print(nih_df_5.shape)
 
-    mix_data(nih_df_0, nih_df_4, nih_df_5)
+    mix_bi_data(nih_df_0, nih_df_1, nih_df_5)
     # nih_df_final = nih_df_clean[['Feeding', 'Transfers', 'Bathing', 'Toilet_use', 'Grooming', 'Mobility',
     #                             'Stairs', 'Dressing', 'Bowel_control', 'Bladder_control', 'Barthel_Total', 'discharged_mrs']]
     # data_utils.save_dataframe_to_csv(nih_df_final, 'testing')

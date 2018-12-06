@@ -40,20 +40,20 @@ def plot_hdbscan(X, outliers_inx, n):
 
 
 if __name__ == '__main__':
-    mrs = 4
+    mrs = 5
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_pca = data_utils.pca_reduction(bi_df)
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
     # mSample = int(round(bi_df.shape[0] * 0.05, 0))
-    clusterer = hdbscan_validation(bi_df_pca_unique, 11)
+    clusterer = hdbscan_validation(bi_df_pca_unique, 8)
 
     # plot_outlier_distribution(clusterer)
-    score_label = make_score_label(bi_df_pca_unique, clusterer, 0.9)
+    # score_label = make_score_label(bi_df_pca_unique, clusterer, 0.9)
 
-    # data_labeled_all, data_labeled_unique = data_utils.label_data(bi_df, bi_df_pca_unique, clusterer.labels_)
-    data_labeled_all, data_labeled_unique = data_utils.label_data(bi_df, bi_df_pca_unique, score_label)
+    data_labeled_all, data_labeled_unique = data_utils.label_data(bi_df, bi_df_pca_unique, clusterer.labels_)
+    # data_labeled_all, data_labeled_unique = data_utils.label_data(bi_df, bi_df_pca_unique, score_label)
 
     outliers_unique, outliers_all = data_utils.outlier_filter(data_labeled_all, data_labeled_unique)
 

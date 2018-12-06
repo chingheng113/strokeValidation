@@ -59,14 +59,14 @@ def dbscan_plot2(X, outliers_inx, n):
 
 
 if __name__ == '__main__':
-    mrs = 4
+    mrs = 5
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     # bi_df_scaled = data_utils.scale(bi_df)
     # bi_df_scaled_unique = bi_df_scaled.drop_duplicates()
     bi_df_pca = data_utils.pca_reduction(bi_df)
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
-    db, labels, core_samples_mask, n_clusters_ = dbscan_validation(bi_df_pca_unique, 0.4, 11)
+    db, labels, core_samples_mask, n_clusters_ = dbscan_validation(bi_df_pca_unique, 2.1, 11)
     data_labeled_all, data_labeled_unique = data_utils.label_data(bi_df, bi_df_pca_unique, labels)
     outliers_unique, outliers_all = data_utils.outlier_filter(data_labeled_all, data_labeled_unique)
 
