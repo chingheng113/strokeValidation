@@ -87,14 +87,24 @@ def pca_reduction(data):
     return df_pca
 
 
-def label_data(df, id_df, outliers, fn):
-    id_bi_df = pd.concat([id_df.loc[df.index], df], axis=1)
-    id_bi_df['clust'] = 1
-    id_bi_df.clust[outliers.index] = -1
-    only_outlier = id_bi_df[id_bi_df['clust'] == -1]
-    print(only_outlier.shape[0])
-    save_dataframe_to_csv(only_outlier, fn)
-    return id_bi_df
+def label_data(df, df_unique, labels):
+    df_unique['label'] = labels
+    all_label = pd.DataFrame(index=df.index, columns=['label'])
+    for index_unique, row_unique in df_unique.iterrows():
+        row = df.loc[[index_unique]]
+        all_row = df.where(df.values == row.values).dropna()
+        i = all_row.index
+        all_label.loc[i] = row_unique['label']
+    df['label'] = all_label.values
+    return df, df_unique
+
+
+def outlier_filter(df, df_unique):
+    outliers_unique = df_unique[df_unique.label == -1]
+    outliers_all = df[df.label == -1]
+    return outliers_unique, outliers_all
+
+
 
 if __name__ == '__main__':
 

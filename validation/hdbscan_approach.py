@@ -14,16 +14,13 @@ def hdbscan_validation(X, mSample):
     return clusterer
 
 
-def outlier_filter(X, clusterer):
-    # threshold methods
-    threshold = pd.Series(clusterer.outlier_scores_).quantile(0.9) # the larger the score the more outlier-like the point.
+def make_score_label(X, clusterer, cutoff):
+    s_label = pd.DataFrame(index=X.index, columns=['label'])
+    threshold = pd.Series(clusterer.outlier_scores_).quantile(cutoff) # the larger the score the more outlier-like the point.
     outlier_inx = np.where(clusterer.outlier_scores_ > threshold)[0]
-    outliers = X.iloc[outlier_inx]
-    plot_outlier_distribution(clusterer)
-
-    # default methods
-    # outliers = X[clusterer.labels_ == -1]
-    return outliers
+    s_label.iloc[outlier_inx] = -1
+    s_label.fillna(0, inplace=True)
+    return s_label.values
 
 
 def plot_outlier_distribution(clusterer):
@@ -31,24 +28,34 @@ def plot_outlier_distribution(clusterer):
     plt.show()
 
 
-def plot_hdbscan(X, outliers_inx):
-    plt.scatter(X[['pca_1']], X[['pca_2']], c='red',
-                cmap=plt.cm.nipy_spectral, edgecolor='k')
+def plot_hdbscan(X, outliers_inx, n):
+    plt.title("HDBSCAN (mRS="+str(n)+")")
+    plt.scatter(X[['pca_1']], X[['pca_2']], c='red', cmap=plt.cm.nipy_spectral, edgecolor='k', label='Data points')
     os = X.loc[outliers_inx]
-    plt.scatter(os[['pca_1']], os[['pca_2']], s=50, linewidth=0, c='black', alpha=1)
+    plt.scatter(os[['pca_1']], os[['pca_2']], s=50, linewidth=0, c='black', alpha=1, label='outliers')
+    legend = plt.legend(loc='upper left')
+    legend.legendHandles[0]._sizes = [10]
+    legend.legendHandles[1]._sizes = [20]
     plt.show()
 
 
 if __name__ == '__main__':
-    mrs = 5
+    mrs = 4
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_pca = data_utils.pca_reduction(bi_df)
+    bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
-    # mSample = int(round(bi_df_reduced.shape[0] * 0.05, 0))
-    clusterer = hdbscan_validation(data_utils.scale(bi_df_unique), 11)
+    # mSample = int(round(bi_df.shape[0] * 0.05, 0))
+    clusterer = hdbscan_validation(bi_df_pca_unique, 11)
 
-    outliers = outlier_filter(bi_df_unique, clusterer)
-    data_utils.label_data(bi_df_unique, id_df, outliers, 'hdbscan_outlier')
-    plot_hdbscan(bi_df_pca, outliers.index)
+    # plot_outlier_distribution(clusterer)
+    score_label = make_score_label(bi_df_pca_unique, clusterer, 0.9)
+
+    # data_labeled_all, data_labeled_unique = data_utils.label_data(bi_df, bi_df_pca_unique, clusterer.labels_)
+    data_labeled_all, data_labeled_unique = data_utils.label_data(bi_df, bi_df_pca_unique, score_label)
+
+    outliers_unique, outliers_all = data_utils.outlier_filter(data_labeled_all, data_labeled_unique)
+
+    plot_hdbscan(bi_df_pca_unique, outliers_unique.index, mrs)
     print('done')
