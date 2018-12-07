@@ -29,14 +29,36 @@ def get_id_bi_data(df):
     return id_df, bi_df
 
 
-def mix_bi_data(df_base, df_add_1, df_add_2):
-    id_df_based, bi_df_based = get_id_bi_data(df_base)
-    id_df_add_1, bi_df_add_1 = get_id_bi_data(df_add_1)
-    add_1_label = pd.DataFrame(index=df_add_1.index, columns=['label'])
-    for index_unique, row in bi_df_add_1.iterrows():
-        s = bi_df_based.values
-        a = np.where(row.values == s)
-        print(a)
+def mix_bi_data(mrs, base, mix1, mix2):
+    base_id, base_bi = get_id_bi_data(base)
+    base_bi_unique = base_bi.drop_duplicates()
+
+    mix1_id, mix1_bi = get_id_bi_data(mix1)
+    mix1_label = pd.DataFrame(index=mix1.index, columns=['label'])
+
+    mix2_id, mix2_bi = get_id_bi_data(mix2)
+    mix2_label = pd.DataFrame(index=mix2.index, columns=['label'])
+
+    for inx, row in mix1_bi.iterrows():
+        isin = base_bi_unique.where(base_bi_unique.values == mix1_bi.loc[[inx]].values).dropna()
+        if isin.empty:
+            mix1_label.loc[inx] = -1
+        else:
+            mix1_label.loc[inx] = 0
+    mix1_bi_label = pd.concat([mix1_bi, mix1_label], axis=1)
+
+    for inx, row in mix2_bi.iterrows():
+        isin = base_bi_unique.where(base_bi_unique.values == mix2_bi.loc[[inx]].values).dropna()
+        if isin.empty:
+            mix2_label.loc[inx] = -1
+        else:
+            mix2_label.loc[inx] = 0
+    mix2_bi_label = pd.concat([mix2_bi, mix2_label], axis=1)
+
+    base_bi['label'] = 0
+    test_data = pd.concat([base_bi, mix1_bi_label, mix2_bi_label], axis=0).drop_duplicates()
+    data_utils.save_dataframe_to_csv(test_data, 'testing_'+str(mrs))
+    print('stop')
 
 if __name__ == '__main__':
     nih_df = data_utils.get_nih()
@@ -54,8 +76,11 @@ if __name__ == '__main__':
     nih_df_5 = nih_df_clean[nih_df_clean['discharged_mrs'] == 5]
     print(nih_df_5.shape)
 
-    mix_bi_data(nih_df_0, nih_df_1, nih_df_5)
-    # nih_df_final = nih_df_clean[['Feeding', 'Transfers', 'Bathing', 'Toilet_use', 'Grooming', 'Mobility',
-    #                             'Stairs', 'Dressing', 'Bowel_control', 'Bladder_control', 'Barthel_Total', 'discharged_mrs']]
-    # data_utils.save_dataframe_to_csv(nih_df_final, 'testing')
+    mix_bi_data(0, nih_df_0, nih_df_4, nih_df_5)
+    mix_bi_data(1, nih_df_1, nih_df_4, nih_df_5)
+    mix_bi_data(2, nih_df_2, nih_df_0, nih_df_5)
+    mix_bi_data(3, nih_df_3, nih_df_0, nih_df_5)
+    mix_bi_data(4, nih_df_4, nih_df_0, nih_df_1)
+    mix_bi_data(5, nih_df_5, nih_df_0, nih_df_1)
+
     print('done')
