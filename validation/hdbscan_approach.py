@@ -10,7 +10,7 @@ import seaborn as sns
 
 
 def hdbscan_validation(X, mSample):
-    clusterer = hdbscan.HDBSCAN(min_cluster_size=mSample, allow_single_cluster=True).fit(X)
+    clusterer = hdbscan.HDBSCAN(min_cluster_size=mSample, prediction_data=True).fit(X)
     return clusterer
 
 
@@ -33,21 +33,42 @@ def plot_hdbscan(X, outliers_inx, n):
     plt.scatter(X[['pca_1']], X[['pca_2']], c='red', cmap=plt.cm.nipy_spectral, edgecolor='k', label='Data points')
     os = X.loc[outliers_inx]
     plt.scatter(os[['pca_1']], os[['pca_2']], s=50, linewidth=0, c='black', alpha=1, label='outliers')
+    # plt.scatter(test_data[:,0], test_data[:,1], s=50, linewidth=0, c='yellow', alpha=1, label='Test points')
     legend = plt.legend(loc='upper left')
     legend.legendHandles[0]._sizes = [10]
     legend.legendHandles[1]._sizes = [20]
-    plt.show()
+
+
+def predict_new_points(clusterer, pca, mrs):
+    all_data = data_utils.get_nih_test(mrs)
+
+    labels = all_data[['label']]
+
+    test_data_pca = pca.transform(scale(all_data.drop(['label'], axis=1)))
+
+    # test_data, test_pca = data_utils.pca_reduction(test_data)
+    # test_data = test_data.values
+
+    test_labels, strengths = hdbscan.approximate_predict(clusterer, test_data)
+    # test_data = test_data[ np.where(test_labels == -1) ]
+
+    # see what happened
+    ot = test_data[ np.where(labels == -1) ]
+    plt.scatter(ot[:,0], ot[:,1], s=50, linewidth=0, c='yellow', alpha=1, label='Test outlier points')
+    noot =  test_data[ np.where(labels != -1) ]
+    plt.scatter(noot[:, 0], noot[:, 1], s=50, linewidth=0, c='blue', alpha=1, label='Test points')
+    return test_data
 
 
 if __name__ == '__main__':
     mrs = 5
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
-    bi_df_pca = data_utils.pca_reduction(bi_df)
+    bi_df_pca, pca = data_utils.pca_reduction(bi_df)
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
     # mSample = int(round(bi_df.shape[0] * 0.05, 0))
-    clusterer = hdbscan_validation(bi_df_pca_unique, 8)
+    clusterer = hdbscan_validation(bi_df_pca_unique, 11)
 
     # plot_outlier_distribution(clusterer)
     # score_label = make_score_label(bi_df_pca_unique, clusterer, 0.9)
@@ -58,4 +79,7 @@ if __name__ == '__main__':
     outliers_unique, outliers_all = data_utils.outlier_filter(data_labeled_all, data_labeled_unique)
 
     plot_hdbscan(bi_df_pca_unique, outliers_unique.index, mrs)
+
+    test_data = predict_new_points(clusterer, pca, mrs)
+    plt.show()
     print('done')

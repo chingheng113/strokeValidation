@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from utils import data_utils
+from random import randint
 
 def basic_filter(df):
     df = df[~(df['discharged_mrs'] == 6)]
@@ -27,6 +28,21 @@ def get_id_bi_data(df):
     id_df = df['CASE_ID']
     bi_df = df[['Feeding', 'Transfers', 'Bathing', 'Toilet_use', 'Grooming', 'Mobility', 'Stairs', 'Dressing', 'Bowel_control', 'Bladder_control']]
     return id_df, bi_df
+
+
+def create_extreme_bi_outlier(df):
+    df_normal = df[df['label'] != -1]
+    columns = df_normal.columns.values
+    indice = df_normal.index.values
+    selected_columns = np.unique(np.random.choice(columns, randint(1, 10)))
+    selected_index = np.random.choice(indice, randint(1, indice.size))
+    for i in selected_index:
+        row = df_normal.loc[[i]]
+        for c in selected_columns:
+            row[c]+= 20
+        row['label'] = -1
+        df = df.append(row)
+    return df.drop_duplicates()
 
 
 def mix_bi_data(mrs, base, mix1, mix2):
@@ -57,8 +73,10 @@ def mix_bi_data(mrs, base, mix1, mix2):
 
     base_bi['label'] = 0
     test_data = pd.concat([base_bi, mix1_bi_label, mix2_bi_label], axis=0).drop_duplicates()
+    test_data = create_extreme_bi_outlier(test_data)
     data_utils.save_dataframe_to_csv(test_data, 'testing_'+str(mrs))
     print('stop')
+
 
 if __name__ == '__main__':
     nih_df = data_utils.get_nih()

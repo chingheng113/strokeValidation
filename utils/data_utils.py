@@ -71,6 +71,11 @@ def get_nih():
     return df
 
 
+def get_nih_test(mrs):
+    df = load_all('testing_'+str(mrs)+'.csv')
+    return df
+
+
 def scale(x_data):
     # scaled_data = np.round(sp.MinMaxScaler(feature_range=(0, 1)).fit_transform(x_data), 3)
     scaled_data = np.round(sp.StandardScaler().fit_transform(x_data), 3)
@@ -84,7 +89,7 @@ def pca_reduction(data):
     pca.fit(scaled_data)
     transformed_data = pca.transform(scaled_data)
     df_pca = pd.DataFrame(transformed_data, columns=['pca_1', 'pca_2'], index=data.index)
-    return df_pca
+    return df_pca, pca
 
 
 def label_data(df, df_unique, labels):

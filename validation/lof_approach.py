@@ -43,7 +43,7 @@ if __name__ == '__main__':
     mrs = 5
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
-    bi_df_pca = data_utils.pca_reduction(bi_df)
+    bi_df_pca, pca = data_utils.pca_reduction(bi_df)
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
     clf = lof_validation(bi_df_pca_unique, 0.1)
