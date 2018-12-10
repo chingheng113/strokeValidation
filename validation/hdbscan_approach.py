@@ -1,11 +1,11 @@
 import numpy as np
 from utils import data_utils
 from sklearn import metrics
-from sklearn.preprocessing import scale
 import pandas as pd
 import hdbscan
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.preprocessing import StandardScaler
 # https://hdbscan.readthedocs.io/en/latest/prediction_tutorial.html
 
 
@@ -30,45 +30,45 @@ def plot_outlier_distribution(clusterer):
 
 def plot_hdbscan(X, outliers_inx, n):
     plt.title("HDBSCAN (mRS="+str(n)+")")
-    plt.scatter(X[['pca_1']], X[['pca_2']], c='red', cmap=plt.cm.nipy_spectral, edgecolor='k', label='Data points')
+    da = X[~X.index.isin(outliers_inx)]
+    plt.scatter(da[['pca_1']], da[['pca_2']], c='red', cmap=plt.cm.nipy_spectral, alpha=0.3, edgecolor='k', label='Data points')
     os = X.loc[outliers_inx]
-    plt.scatter(os[['pca_1']], os[['pca_2']], s=50, linewidth=0, c='black', alpha=1, label='outliers')
-    # plt.scatter(test_data[:,0], test_data[:,1], s=50, linewidth=0, c='yellow', alpha=1, label='Test points')
+    plt.scatter(os[['pca_1']], os[['pca_2']], s=50, linewidth=0, c='black', alpha=0.3, label='Outliers')
     legend = plt.legend(loc='upper left')
     legend.legendHandles[0]._sizes = [10]
     legend.legendHandles[1]._sizes = [20]
 
 
-def predict_new_points(clusterer, pca, mrs):
-    all_data = data_utils.get_nih_test(mrs)
+def predict_new_points(clusterer, mrs):
+    test_bi_pca_all = data_utils.get_nih_test_transformed(mrs)
 
-    labels = all_data[['label']]
-
-    test_data_pca = pca.transform(scale(all_data.drop(['label'], axis=1)))
-
-    # test_data, test_pca = data_utils.pca_reduction(test_data)
-    # test_data = test_data.values
-
-    test_labels, strengths = hdbscan.approximate_predict(clusterer, test_data)
-    # test_data = test_data[ np.where(test_labels == -1) ]
+    labels = test_bi_pca_all[['label']]
+    test_bi_pca = test_bi_pca_all.drop(['label'], axis=1)
 
     # see what happened
-    ot = test_data[ np.where(labels == -1) ]
-    plt.scatter(ot[:,0], ot[:,1], s=50, linewidth=0, c='yellow', alpha=1, label='Test outlier points')
-    noot =  test_data[ np.where(labels != -1) ]
-    plt.scatter(noot[:, 0], noot[:, 1], s=50, linewidth=0, c='blue', alpha=1, label='Test points')
-    return test_data
+    ot = test_bi_pca_all[test_bi_pca_all['label'] == -1]
+    plt.scatter(ot[['pca_1']], ot[['pca_2']], s=50, linewidth=0, c='yellow', alpha=1, label='Test outliers')
+    noot = test_bi_pca_all[test_bi_pca_all['label'] != -1]
+    plt.scatter(noot[['pca_1']], noot[['pca_2']], s=50, linewidth=0, c='blue', alpha=1, label='Test data points')
+    legend = plt.legend(loc='upper left')
+    legend.legendHandles[2]._sizes = [30]
+    legend.legendHandles[3]._sizes = [40]
+
+    test_labels, strengths = hdbscan.approximate_predict(clusterer, test_bi_pca)
+    test_labels [test_labels > -1] = 0
+    sensitivity, specificity, accuracy = data_utils.show_performance(labels, test_labels)
+    return sensitivity, specificity, accuracy
 
 
 if __name__ == '__main__':
-    mrs = 5
+    mrs = 1
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
     # mSample = int(round(bi_df.shape[0] * 0.05, 0))
-    clusterer = hdbscan_validation(bi_df_pca_unique, 11)
+    clusterer = hdbscan_validation(bi_df_pca_unique, 8)
 
     # plot_outlier_distribution(clusterer)
     # score_label = make_score_label(bi_df_pca_unique, clusterer, 0.9)
@@ -78,8 +78,9 @@ if __name__ == '__main__':
 
     outliers_unique, outliers_all = data_utils.outlier_filter(data_labeled_all, data_labeled_unique)
 
-    plot_hdbscan(bi_df_pca_unique, outliers_unique.index, mrs)
+    plot_hdbscan(bi_df_pca, outliers_all.index, mrs)
 
-    test_data = predict_new_points(clusterer, pca, mrs)
+    print(predict_new_points(clusterer, mrs))
+
     plt.show()
     print('done')

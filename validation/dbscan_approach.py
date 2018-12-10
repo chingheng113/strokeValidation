@@ -66,8 +66,11 @@ if __name__ == '__main__':
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
-    db, labels, core_samples_mask, n_clusters_ = dbscan_validation(bi_df_pca_unique, 2.1, 11)
+    db, labels, core_samples_mask, n_clusters_ = dbscan_validation(bi_df_pca_unique, 1.3, 11)
     data_labeled_all, data_labeled_unique = data_utils.label_data(bi_df, bi_df_pca_unique, labels)
+
+    data_utils.save_dataframe_to_csv(data_labeled_unique, 'dbscan_'+str(mrs))
+
     outliers_unique, outliers_all = data_utils.outlier_filter(data_labeled_all, data_labeled_unique)
 
     # dbscan_plot(mrs, bi_df_pca_unique.values, core_samples_mask, n_clusters_, labels)

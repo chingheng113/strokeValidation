@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 from sklearn import preprocessing as sp
 from sklearn import decomposition
+from sklearn.metrics import confusion_matrix
 
 
 
@@ -71,21 +72,21 @@ def get_nih():
     return df
 
 
-def get_nih_test(mrs):
-    df = load_all('testing_'+str(mrs)+'.csv')
+def get_nih_test_transformed(mrs):
+    df = load_all('testing_'+str(mrs)+'_pca.csv')
     return df
 
 
 def scale(x_data):
-    # scaled_data = np.round(sp.MinMaxScaler(feature_range=(0, 1)).fit_transform(x_data), 3)
-    scaled_data = np.round(sp.StandardScaler().fit_transform(x_data), 3)
+    scaler = sp.StandardScaler().fit(x_data)
+    scaled_data = np.round(scaler.transform(x_data), 3)
     scaled_df = pd.DataFrame(scaled_data, index=x_data.index, columns=x_data.columns)
-    return scaled_df
+    return scaled_df, scaler
 
 
 def pca_reduction(data):
     pca = decomposition.PCA(n_components=2)
-    scaled_data = scale(data)
+    scaled_data, scaler = scale(data)
     pca.fit(scaled_data)
     transformed_data = pca.transform(scaled_data)
     df_pca = pd.DataFrame(transformed_data, columns=['pca_1', 'pca_2'], index=data.index)
@@ -109,6 +110,40 @@ def outlier_filter(df, df_unique):
     outliers_all = df[df.label == -1]
     return outliers_unique, outliers_all
 
+
+def get_performance(cm):
+    TN = cm[0][0]
+    FP = cm[0][1]
+    FN = cm[1][0]
+    TP = cm[1][1]
+    # Sensitivity, hit rate, recall, or true positive rate
+    TPR = TP/(TP+FN)
+    # Specificity or true negative rate
+    TNR = TN/(TN+FP)
+    # Precision or positive predictive value
+    PPV = TP/(TP+FP)
+    # Negative predictive value
+    NPV = TN/(TN+FN)
+    # Fall out or false positive rate
+    FPR = FP/(FP+TN)
+    # False negative rate
+    FNR = FN/(TP+FN)
+    # False discovery rate
+    FDR = FP/(TP+FP)
+    # Overall accuracy
+    ACC = (TP+TN)/(TP+FP+FN+TN)
+    return TPR, TNR, ACC
+
+
+def get_confusionmatrix(label, prediction):
+    cm = confusion_matrix(label, prediction)
+    return cm
+
+
+def show_performance(label, prediction):
+    cm = get_confusionmatrix(label, prediction)
+    sensitivity, specificity, accuracy = get_performance(cm)
+    return sensitivity, specificity, accuracy
 
 
 if __name__ == '__main__':

@@ -25,14 +25,33 @@ def make_score_label(X, clf, cutoff):
 
 def plot_lof(X, outliers_inx, n):
     plt.title("Local Outlier Factor (mRS="+str(n)+")")
-    plt.scatter(X.iloc[:, 0], X.iloc[:, 1], c='red', cmap=plt.cm.nipy_spectral, edgecolor='k', label='Data points')
+    da = X[~X.index.isin(outliers_inx)]
+    plt.scatter(da[['pca_1']], da[['pca_2']], c='red', cmap=plt.cm.nipy_spectral, alpha=0.3, edgecolor='k', label='Data points')
     os = X.loc[outliers_inx]
-    plt.scatter(os.iloc[:, 0], os.iloc[:, 1], s=50, linewidth=0, c='black', alpha=1, label='outliers')
+    plt.scatter(os[['pca_1']], os[['pca_2']], s=50, linewidth=0, c='black', alpha=0.3, label='Outliers')
     legend = plt.legend(loc='upper left')
     legend.legendHandles[0]._sizes = [10]
     legend.legendHandles[1]._sizes = [20]
-    plt.show()
 
+
+def predict_new_points(clf, mrs):
+    test_bi_pca_all = data_utils.get_nih_test_transformed(mrs)
+
+    labels = test_bi_pca_all[['label']]
+    test_bi_pca = test_bi_pca_all.drop(['label'], axis=1)
+
+    # see what happened
+    ot = test_bi_pca_all[test_bi_pca_all['label'] == -1]
+    plt.scatter(ot[['pca_1']], ot[['pca_2']], s=50, linewidth=0, c='yellow', alpha=1, label='Test outliers')
+    noot = test_bi_pca_all[test_bi_pca_all['label'] != -1]
+    plt.scatter(noot[['pca_1']], noot[['pca_2']], s=50, linewidth=0, c='blue', alpha=1, label='Test data points')
+    legend = plt.legend(loc='upper left')
+    legend.legendHandles[2]._sizes = [30]
+    legend.legendHandles[3]._sizes = [40]
+    test_labels = clf._predict(test_bi_pca)
+    test_labels [test_labels > -1] = 0
+    sensitivity, specificity, accuracy = data_utils.show_performance(labels, test_labels)
+    return sensitivity, specificity, accuracy
 
 def plot_outlier_distribution(clf):
     sns.distplot(clf.negative_outlier_factor_[np.isfinite(clf.negative_outlier_factor_)], rug=True)
@@ -54,5 +73,6 @@ if __name__ == '__main__':
     outliers_unique, outliers_all = data_utils.outlier_filter(data_labeled_all, data_labeled_unique)
 
     plot_lof(bi_df_pca_unique, outliers_unique.index, mrs)
-
+    print(predict_new_points(clf, mrs))
+    plt.show()
     print('done')

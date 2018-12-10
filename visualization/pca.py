@@ -20,7 +20,7 @@ def do_pca(data, labels):
     plt.plot(va1)
     '''
     transformed_data = pca.transform(data)
-    data_utils.save_dataframe_to_csv(DataFrame(transformed_data), 'pca')
+    # data_utils.save_dataframe_to_csv(DataFrame(transformed_data), 'pca')
 
     plt.scatter(transformed_data[:, 0], transformed_data[:, 1], c=labels.values.ravel(),
                 cmap=plt.cm.nipy_spectral, edgecolor='k', alpha=0.5)
@@ -31,7 +31,7 @@ def do_pca(data, labels):
 
 
 if __name__ == '__main__':
-    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(5, 'is')
+    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr('', 'is')
     # bi_df = bi_df.drop_duplicates()
     # mrs_df = mrs_df.loc[bi_df.index]
     do_pca(bi_df, mrs_df)

@@ -73,9 +73,27 @@ def mix_bi_data(mrs, base, mix1, mix2):
 
     base_bi['label'] = 0
     test_data = pd.concat([base_bi, mix1_bi_label, mix2_bi_label], axis=0).drop_duplicates()
-    test_data = create_extreme_bi_outlier(test_data)
+    # test_data = create_extreme_bi_outlier(test_data)
     data_utils.save_dataframe_to_csv(test_data, 'testing_'+str(mrs))
-    print('stop')
+    return test_data
+
+
+def do_transform(mrs, test_data):
+    # training data
+    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
+    scaled_bi, scaler = data_utils.scale(bi_df)
+    bi_df_pca, pca = data_utils.pca_reduction(bi_df)
+
+    # testing data
+    labels = test_data[['label']]
+    test_bi = test_data.drop(['label'], axis=1)
+
+    test_bi_scaled = scaler.transform(test_bi.values)
+    test_bi_pca = pca.transform(test_bi_scaled)
+    test_bi_pca_df = pd.DataFrame(data=test_bi_pca, index=test_data.index, columns=['pca_1', 'pca_2'])
+    test_bi_pca_df['label'] = labels.values
+    data_utils.save_dataframe_to_csv(test_bi_pca_df, 'testing_'+str(mrs)+'_pca')
+    return test_bi_pca_df
 
 
 if __name__ == '__main__':
@@ -94,11 +112,22 @@ if __name__ == '__main__':
     nih_df_5 = nih_df_clean[nih_df_clean['discharged_mrs'] == 5]
     print(nih_df_5.shape)
 
-    mix_bi_data(0, nih_df_0, nih_df_4, nih_df_5)
-    mix_bi_data(1, nih_df_1, nih_df_4, nih_df_5)
-    mix_bi_data(2, nih_df_2, nih_df_0, nih_df_5)
-    mix_bi_data(3, nih_df_3, nih_df_0, nih_df_5)
-    mix_bi_data(4, nih_df_4, nih_df_0, nih_df_1)
-    mix_bi_data(5, nih_df_5, nih_df_0, nih_df_1)
+    mixed_0 = mix_bi_data(0, nih_df_0, nih_df_4, nih_df_5)
+    do_transform(0, mixed_0)
+
+    mixed_1 = mix_bi_data(1, nih_df_1, nih_df_4, nih_df_5)
+    do_transform(1, mixed_1)
+
+    mixed_2 = mix_bi_data(2, nih_df_2, nih_df_0, nih_df_5)
+    do_transform(2, mixed_2)
+
+    mixed_3 = mix_bi_data(3, nih_df_3, nih_df_0, nih_df_5)
+    do_transform(3, mixed_3)
+
+    mixed_4 = mix_bi_data(4, nih_df_4, nih_df_0, nih_df_1)
+    do_transform(4, mixed_4)
+
+    mixed_5 = mix_bi_data(5, nih_df_5, nih_df_0, nih_df_1)
+    do_transform(5, mixed_5)
 
     print('done')
