@@ -5,12 +5,12 @@ import pandas as pd
 import hdbscan
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.preprocessing import StandardScaler
 # https://hdbscan.readthedocs.io/en/latest/prediction_tutorial.html
 
 
 def hdbscan_validation(X, mSample):
     clusterer = hdbscan.HDBSCAN(min_cluster_size=mSample, prediction_data=True).fit(X)
+    print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, clusterer.labels_))
     return clusterer
 
 
@@ -53,7 +53,7 @@ def predict_new_points(clusterer, mrs):
     legend = plt.legend(loc='upper left')
     legend.legendHandles[2]._sizes = [30]
     legend.legendHandles[3]._sizes = [40]
-
+    #
     test_labels, strengths = hdbscan.approximate_predict(clusterer, test_bi_pca)
     test_labels [test_labels > -1] = 0
     sensitivity, specificity, accuracy = data_utils.show_performance(labels, test_labels)
@@ -61,14 +61,14 @@ def predict_new_points(clusterer, mrs):
 
 
 if __name__ == '__main__':
-    mrs = 1
+    mrs = 3
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
     # mSample = int(round(bi_df.shape[0] * 0.05, 0))
-    clusterer = hdbscan_validation(bi_df_pca_unique, 8)
+    clusterer = hdbscan_validation(bi_df_pca_unique, 11)
 
     # plot_outlier_distribution(clusterer)
     # score_label = make_score_label(bi_df_pca_unique, clusterer, 0.9)
