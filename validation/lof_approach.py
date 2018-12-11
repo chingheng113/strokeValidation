@@ -61,13 +61,13 @@ def plot_outlier_distribution(clf):
 
 
 if __name__ == '__main__':
-    mrs = 3
+    mrs = 5
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
-    k_neighbors = 15
+    k_neighbors = 11
     outliers_fraction = 0.1
     clf = LocalOutlierFactor(n_neighbors=k_neighbors, contamination=outliers_fraction)
     labels = clf.fit_predict(bi_df_pca_unique)
