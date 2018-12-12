@@ -1,4 +1,4 @@
-CASE_ID,onset_age,GENDER_TX,Feeding,Transfers,Bathing,Toilet_use,Grooming,Mobility,Stairs,Dressing,Bowel_control,Bladder_control,Barthel_ Total,discharged_mrs,NIHS_1a_out,NIHS_1b_out,NIHS_1c_out,NIHS_2_out,NIHS_3_out,NIHS_4_out,NIHS_5aL_out,NIHS_5bR_out,NIHS_6aL_out,NIHS_6bR_out,NIHS_7_out,NIHS_8_out,NIHS_9_out,NIHS_10_out,NIHS_11_out,NIHSS_Total,ICD_ID_1.0,ICD_ID_2.0,ICD_ID_3.0,ICD_ID_4.0
+CASE_ID,onset_age,GENDER_TX,Feeding,Transfers,Bathing,Toilet_use,Grooming,Mobility,Stairs,Dressing,Bowel_control,Bladder_control,Barthel_Total,discharged_mrs,NIHS_1a_out,NIHS_1b_out,NIHS_1c_out,NIHS_2_out,NIHS_3_out,NIHS_4_out,NIHS_5aL_out,NIHS_5bR_out,NIHS_6aL_out,NIHS_6bR_out,NIHS_7_out,NIHS_8_out,NIHS_9_out,NIHS_10_out,NIHS_11_out,NIHSS_Total,ICD_ID_1.0,ICD_ID_2.0,ICD_ID_3.0,ICD_ID_4.0
 007-00000003-1,40,0,0,0,0,0,0,0,0,0,0,0,0,5,2,2,2,1,1,2,2,2,2,2,0,1,2,2,2,25,0,0,1,0
 007-00000004-1,63,0,10,15,5,10,5,15,10,10,10,10,100,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
 007-00000005-1,71,0,10,15,5,10,5,15,10,10,10,10,100,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0

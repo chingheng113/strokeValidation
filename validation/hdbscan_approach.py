@@ -47,9 +47,9 @@ def predict_new_points(clusterer, mrs):
 
     # see what happened
     ot = test_bi_pca_all[test_bi_pca_all['label'] == -1]
-    plt.scatter(ot[['pca_1']], ot[['pca_2']], s=50, linewidth=0, c='yellow', alpha=1, label='Test outliers')
+    plt.scatter(ot[['pca_1']], ot[['pca_2']], s=50, linewidth=0, c='yellow', alpha=0.5, label='Test outliers')
     noot = test_bi_pca_all[test_bi_pca_all['label'] != -1]
-    plt.scatter(noot[['pca_1']], noot[['pca_2']], s=50, linewidth=0, c='blue', alpha=1, label='Test data points')
+    plt.scatter(noot[['pca_1']], noot[['pca_2']], s=50, linewidth=0, c='blue', alpha=0.4, label='Test data points')
     legend = plt.legend(loc='upper left')
     legend.legendHandles[2]._sizes = [30]
     legend.legendHandles[3]._sizes = [40]
@@ -61,14 +61,15 @@ def predict_new_points(clusterer, mrs):
 
 
 if __name__ == '__main__':
-    mrs = 1
+    mrs = 4
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
-    # mSample = int(round(bi_df.shape[0] * 0.05, 0))
-    clusterer = hdbscan_validation(bi_df_pca_unique, 8)
+    mSample = int(round(bi_df_pca_unique.shape[0] * 0.05, 0))
+    print(mSample)
+    clusterer = hdbscan_validation(bi_df_pca_unique, 11)
 
     # plot_outlier_distribution(clusterer)
     # score_label = make_score_label(bi_df_pca_unique, clusterer, 0.9)

@@ -54,8 +54,9 @@ if __name__ == '__main__':
     labels = test_bi_pca_all[['label']]
     test_bi_pca = test_bi_pca_all.drop(['label'], axis=1)
     print(bi_df_pca_unique.shape[0])
-    hdb_samples = [3, 4, 5, 6, 7, 8, 9, 10, 11, 20]
-    lof_samples = [10, 15, 20, 25, 30, ]
+    mSample = int(round(bi_df_pca_unique.shape[0] * 0.05, 0))
+    hdb_samples = range(mSample, 11, step=1)
+    lof_samples = [3, 6, 9]
     hdbscan_see(bi_df_pca_unique, test_bi_pca, labels, hdb_samples)
     # lof_see(bi_df_pca_unique, test_bi_pca, labels, lof_samples)
 

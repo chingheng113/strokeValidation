@@ -25,9 +25,10 @@ def violin_plot(data):
     plt.show()
 
 if __name__ == '__main__':
-    df = data_utils.get_ischemic('TSR.csv')
+    # df = data_utils.get_ischemic('TSR.csv')
+    df = data_utils.get_nih()
     n = 'NIHSS_Total'
-    b = 'Barthel_ Total'
+    b = 'Barthel_Total'
     m = 'discharged_mrs'
     df_nbm = df[[n, b, m]]
     bubble_plot(df_nbm[[m, b]], [m, b])

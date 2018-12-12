@@ -137,6 +137,7 @@ def get_performance(cm):
 
 def get_confusionmatrix(label, prediction):
     cm = confusion_matrix(label, prediction)
+    print(cm)
     return cm
 
 
