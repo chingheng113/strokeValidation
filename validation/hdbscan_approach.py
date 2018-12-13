@@ -5,11 +5,12 @@ import pandas as pd
 import hdbscan
 import matplotlib.pyplot as plt
 import seaborn as sns
+import math
 # https://hdbscan.readthedocs.io/en/latest/prediction_tutorial.html
 
 
 def hdbscan_validation(X, mSample):
-    clusterer = hdbscan.HDBSCAN(min_cluster_size=mSample, min_samples=8, prediction_data=True).fit(X)
+    clusterer = hdbscan.HDBSCAN(min_cluster_size=mSample, prediction_data=True).fit(X)
     # print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, clusterer.labels_))
     return clusterer
 
@@ -61,15 +62,15 @@ def predict_new_points(clusterer, mrs):
 
 
 if __name__ == '__main__':
-    mrs = 4
+    mrs = 5
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
-    mSample = int(round(bi_df_pca_unique.shape[0] * 0.05, 0))
-    print(mSample)
-    clusterer = hdbscan_validation(bi_df_pca_unique, 12)
+    # mSample = int(round(bi_df_pca_unique.shape[0] * 0.05, 0))
+    mSample = math.floor(math.log(bi_df_pca_unique.shape[0], 10))
+    clusterer = hdbscan_validation(bi_df_pca_unique, 3*mSample)
 
     # plot_outlier_distribution(clusterer)
     # score_label = make_score_label(bi_df_pca_unique, clusterer, 0.9)
@@ -84,4 +85,6 @@ if __name__ == '__main__':
     print(predict_new_points(clusterer, mrs))
 
     plt.show()
+    print(bi_df_pca_unique.shape[0])
+    print(mSample*3)
     print('done')

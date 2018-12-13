@@ -61,14 +61,14 @@ def plot_outlier_distribution(clf):
 
 
 if __name__ == '__main__':
-    mrs = 4
+    mrs = 5
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
-    k_neighbors = 414
-    outliers_fraction = 0.13
+    k_neighbors = 3
+    outliers_fraction = 0.18
     clf = LocalOutlierFactor(n_neighbors=k_neighbors, contamination=outliers_fraction)
     labels = clf.fit_predict(bi_df_pca_unique)
     print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(bi_df_pca_unique, labels))

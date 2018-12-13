@@ -5,22 +5,21 @@ from random import randint
 
 def basic_filter(df):
     df = df[~(df['discharged_mrs'] == 6)]
-    df = df[~((df['Stairs'] == 10) & (df['NIHS_6aL_out'] == 4) & (df['NIHS_6bR_out'] == 4))]
-    df = df[~(df['NIHSS_Total'] > 39)]
-    df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_1b_out'] != 2))]
-    df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_1c_out'] != 2))]
-    df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_4_out'] != 3))]
-    df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_5aL_out'] != 4))]
-    df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_5bR_out'] != 4))]
-    df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_6aL_out'] != 4))]
-    df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_6bR_out'] != 4))]
-    df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_7_out'] != 0))]
-    df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_8_out'] != 2))]
-    df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_9_out'] != 3))]
-    df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_10_out'] != 2))]
-    df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_11_out'] != 0))]
+    # df = df[~((df['Stairs'] == 10) & (df['NIHS_6aL_out'] == 4) & (df['NIHS_6bR_out'] == 4))]
+    # df = df[~(df['NIHSS_Total'] > 39)]
+    # df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_1b_out'] != 2))]
+    # df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_1c_out'] != 2))]
+    # df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_4_out'] != 3))]
+    # df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_5aL_out'] != 4))]
+    # df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_5bR_out'] != 4))]
+    # df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_6aL_out'] != 4))]
+    # df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_6bR_out'] != 4))]
+    # df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_7_out'] != 0))]
+    # df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_8_out'] != 2))]
+    # df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_9_out'] != 3))]
+    # df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_10_out'] != 2))]
+    # df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_11_out'] != 0))]
     df = df[~((df['Barthel_Total'] == 0) & (df['discharged_mrs'] < 5))]
-    print(df.shape)
     # https://www.ahajournals.org/doi/abs/10.1161/01.str.30.8.1538
     df = df[~((df['Barthel_Total'] > 60) & (df['discharged_mrs'] > 3))]
     df = df[~((df['Barthel_Total'] < 59) & (df['discharged_mrs'] < 4))]
@@ -101,7 +100,9 @@ def do_transform(mrs, test_data):
 
 if __name__ == '__main__':
     nih_df = data_utils.get_nih()
+    print(nih_df.shape)
     nih_df_clean = basic_filter(nih_df)
+    print(nih_df_clean.shape)
     data_utils.save_dataframe_to_csv(nih_df_clean, 'aa.csv')
     nih_df_0 = nih_df_clean[nih_df_clean['discharged_mrs'] == 0]
     print(nih_df_0.shape)
