@@ -9,7 +9,7 @@ import seaborn as sns
 
 
 def hdbscan_validation(X, mSample):
-    clusterer = hdbscan.HDBSCAN(min_cluster_size=mSample, prediction_data=True).fit(X)
+    clusterer = hdbscan.HDBSCAN(min_cluster_size=mSample, min_samples=8, prediction_data=True).fit(X)
     # print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, clusterer.labels_))
     return clusterer
 
@@ -47,9 +47,9 @@ def predict_new_points(clusterer, mrs):
 
     # see what happened
     ot = test_bi_pca_all[test_bi_pca_all['label'] == -1]
-    plt.scatter(ot[['pca_1']], ot[['pca_2']], s=50, linewidth=0, c='yellow', alpha=0.5, label='Test outliers')
+    plt.scatter(ot[['pca_1']], ot[['pca_2']], s=50, linewidth=0, c='yellow', alpha=1, label='Test outliers')
     noot = test_bi_pca_all[test_bi_pca_all['label'] != -1]
-    plt.scatter(noot[['pca_1']], noot[['pca_2']], s=50, linewidth=0, c='blue', alpha=0.4, label='Test data points')
+    plt.scatter(noot[['pca_1']], noot[['pca_2']], s=50, linewidth=0, c='blue', alpha=1, label='Test data points')
     legend = plt.legend(loc='upper left')
     legend.legendHandles[2]._sizes = [30]
     legend.legendHandles[3]._sizes = [40]
@@ -69,7 +69,7 @@ if __name__ == '__main__':
 
     mSample = int(round(bi_df_pca_unique.shape[0] * 0.05, 0))
     print(mSample)
-    clusterer = hdbscan_validation(bi_df_pca_unique, 11)
+    clusterer = hdbscan_validation(bi_df_pca_unique, 12)
 
     # plot_outlier_distribution(clusterer)
     # score_label = make_score_label(bi_df_pca_unique, clusterer, 0.9)

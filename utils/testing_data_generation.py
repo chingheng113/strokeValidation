@@ -21,6 +21,9 @@ def basic_filter(df):
     df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_11_out'] != 0))]
     df = df[~((df['Barthel_Total'] == 0) & (df['discharged_mrs'] < 5))]
     print(df.shape)
+    # https://www.ahajournals.org/doi/abs/10.1161/01.str.30.8.1538
+    df = df[~((df['Barthel_Total'] > 60) & (df['discharged_mrs'] > 3))]
+    df = df[~((df['Barthel_Total'] < 59) & (df['discharged_mrs'] < 4))]
     return df
 
 
@@ -99,6 +102,7 @@ def do_transform(mrs, test_data):
 if __name__ == '__main__':
     nih_df = data_utils.get_nih()
     nih_df_clean = basic_filter(nih_df)
+    data_utils.save_dataframe_to_csv(nih_df_clean, 'aa.csv')
     nih_df_0 = nih_df_clean[nih_df_clean['discharged_mrs'] == 0]
     print(nih_df_0.shape)
     nih_df_1 = nih_df_clean[nih_df_clean['discharged_mrs'] == 1]
