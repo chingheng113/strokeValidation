@@ -40,8 +40,8 @@ def plot_hdbscan(X, outliers_inx, n):
     legend.legendHandles[1]._sizes = [20]
 
 
-def predict_new_points(clusterer, mrs):
-    test_bi_pca_all = data_utils.get_nih_test_transformed(mrs)
+def predict_new_points(test_dataset, clusterer, mrs):
+    test_bi_pca_all = data_utils.get_test_transformed(test_dataset, mrs)
 
     labels = test_bi_pca_all[['label']]
     test_bi_pca = test_bi_pca_all.drop(['label'], axis=1)
@@ -62,7 +62,8 @@ def predict_new_points(clusterer, mrs):
 
 
 if __name__ == '__main__':
-    mrs = 4
+    mrs = 5
+    test_dataset = 'alias'
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
@@ -82,7 +83,7 @@ if __name__ == '__main__':
 
     plot_hdbscan(bi_df_pca, outliers_all.index, mrs)
 
-    print(predict_new_points(clusterer, mrs))
+    print(predict_new_points(test_dataset, clusterer, mrs))
 
     plt.show()
     print(bi_df_pca_unique.shape[0])

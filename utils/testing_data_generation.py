@@ -80,7 +80,7 @@ def mix_bi_data(mrs, base, mix1, mix2):
     return test_data
 
 
-def do_transform(mrs, test_data):
+def do_transform(dataset, mrs, test_data):
     # training data
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     scaled_bi, scaler = data_utils.scale(bi_df)
@@ -94,45 +94,57 @@ def do_transform(mrs, test_data):
     test_bi_pca = pca.transform(test_bi_scaled)
     test_bi_pca_df = pd.DataFrame(data=test_bi_pca, index=test_data.index, columns=['pca_1', 'pca_2'])
     test_bi_pca_df['label'] = labels.values
-    data_utils.save_dataframe_to_csv(test_bi_pca_df, 'testing_'+str(mrs)+'_pca')
+    data_utils.save_dataframe_to_csv(test_bi_pca_df, dataset+'_testing_'+str(mrs)+'_pca')
     return test_bi_pca_df
 
 
 if __name__ == '__main__':
-    nih_df = data_utils.get_nih()
-    print(nih_df.shape)
-    nih_df_clean = basic_filter(nih_df)
-    print(nih_df_clean.shape)
-    data_utils.save_dataframe_to_csv(nih_df_clean, 'aa.csv')
-    nih_df_0 = nih_df_clean[nih_df_clean['discharged_mrs'] == 0]
-    print(nih_df_0.shape)
-    nih_df_1 = nih_df_clean[nih_df_clean['discharged_mrs'] == 1]
-    print(nih_df_1.shape)
-    nih_df_2 = nih_df_clean[nih_df_clean['discharged_mrs'] == 2]
-    print(nih_df_2.shape)
-    nih_df_3 = nih_df_clean[nih_df_clean['discharged_mrs'] == 3]
-    print(nih_df_3.shape)
-    nih_df_4 = nih_df_clean[nih_df_clean['discharged_mrs'] == 4]
-    print(nih_df_4.shape)
-    nih_df_5 = nih_df_clean[nih_df_clean['discharged_mrs'] == 5]
-    print(nih_df_5.shape)
+    dataset = 'alias'
+    if dataset == 'nih':
+        df = data_utils.get_nih()
+    elif dataset == 'alias':
+        df = data_utils.get_alias()
+    elif dataset == 'fast':
+        df = data_utils.get_fast()
+    elif dataset == 'tnk':
+        df = data_utils.get_tnk()
+    else:
+        print('error')
 
-    mixed_0 = mix_bi_data(0, nih_df_0, nih_df_4, nih_df_5)
-    do_transform(0, mixed_0)
 
-    mixed_1 = mix_bi_data(1, nih_df_1, nih_df_4, nih_df_5)
-    do_transform(1, mixed_1)
+    print(df.shape)
+    df_clean = basic_filter(df)
+    print(df_clean.shape)
+    data_utils.save_dataframe_to_csv(df_clean, 'aa.csv')
+    df_0 = df_clean[df_clean['discharged_mrs'] == 0]
+    print(df_0.shape)
+    df_1 = df_clean[df_clean['discharged_mrs'] == 1]
+    print(df_1.shape)
+    df_2 = df_clean[df_clean['discharged_mrs'] == 2]
+    print(df_2.shape)
+    df_3 = df_clean[df_clean['discharged_mrs'] == 3]
+    print(df_3.shape)
+    df_4 = df_clean[df_clean['discharged_mrs'] == 4]
+    print(df_4.shape)
+    df_5 = df_clean[df_clean['discharged_mrs'] == 5]
+    print(df_5.shape)
 
-    mixed_2 = mix_bi_data(2, nih_df_2, nih_df_0, nih_df_5)
-    do_transform(2, mixed_2)
+    mixed_0 = mix_bi_data(0, df_0, df_4, df_5)
+    do_transform(dataset, 0, mixed_0)
 
-    mixed_3 = mix_bi_data(3, nih_df_3, nih_df_0, nih_df_5)
-    do_transform(3, mixed_3)
+    mixed_1 = mix_bi_data(1, df_1, df_4, df_5)
+    do_transform(dataset, 1, mixed_1)
 
-    mixed_4 = mix_bi_data(4, nih_df_4, nih_df_0, nih_df_1)
-    do_transform(4, mixed_4)
+    mixed_2 = mix_bi_data(2, df_2, df_0, df_5)
+    do_transform(dataset, 2, mixed_2)
 
-    mixed_5 = mix_bi_data(5, nih_df_5, nih_df_0, nih_df_1)
-    do_transform(5, mixed_5)
+    mixed_3 = mix_bi_data(3, df_3, df_0, df_5)
+    do_transform(dataset, 3, mixed_3)
+
+    mixed_4 = mix_bi_data(4, df_4, df_0, df_1)
+    do_transform(dataset, 4, mixed_4)
+
+    mixed_5 = mix_bi_data(5, df_5, df_0, df_1)
+    do_transform(dataset, 5, mixed_5)
 
     print('done')

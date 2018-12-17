@@ -72,8 +72,23 @@ def get_nih():
     return df
 
 
-def get_nih_test_transformed(mrs):
-    df = load_all('testing_'+str(mrs)+'_pca.csv')
+def get_alias():
+    df = load_all('ALIAS.csv')
+    return df
+
+
+def get_tnk():
+    df = load_all('TNK.csv')
+    return df
+
+
+def get_fast():
+    df = load_all('FAST.csv')
+    return df
+
+
+def get_test_transformed(dataset, mrs):
+    df = load_all(dataset+'_testing_'+str(mrs)+'_pca.csv')
     return df
 
 

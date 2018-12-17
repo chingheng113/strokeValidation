@@ -34,8 +34,8 @@ def plot_lof(X, outliers_inx, n):
     legend.legendHandles[1]._sizes = [20]
 
 
-def predict_new_points(clf, mrs):
-    test_bi_pca_all = data_utils.get_nih_test_transformed(mrs)
+def predict_new_points(test_dataset, clf, mrs):
+    test_bi_pca_all = data_utils.get_test_transformed(test_dataset, mrs)
     # test_bi_pca_all = test_bi_pca_all.iloc[65:70,]
     labels = test_bi_pca_all[['label']]
     test_bi_pca = test_bi_pca_all.drop(['label'], axis=1)
@@ -62,6 +62,7 @@ def plot_outlier_distribution(clf):
 
 if __name__ == '__main__':
     mrs = 0
+    test_dataset = 'alias'
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
@@ -80,6 +81,6 @@ if __name__ == '__main__':
     plot_lof(bi_df_pca_unique, outliers_unique.index, mrs)
 
     clf_predict = LocalOutlierFactor(n_neighbors=k_neighbors, contamination=outliers_fraction, novelty=True).fit(bi_df_pca_unique.drop(['label'], axis=1))
-    print(predict_new_points(clf_predict, mrs))
+    print(predict_new_points(test_dataset, clf_predict, mrs))
     plt.show()
     print('done')

@@ -58,8 +58,8 @@ def dbscan_plot2(X, outliers_inx, n):
     legend.legendHandles[1]._sizes = [20]
 
 
-def plot_new_points(mrs):
-    test_bi_pca_all = data_utils.get_nih_test_transformed(mrs)
+def plot_new_points(test_dataset, mrs):
+    test_bi_pca_all = data_utils.get_test_transformed(test_dataset, mrs)
     # see what happened
     ot = test_bi_pca_all[test_bi_pca_all['label'] == -1]
     plt.scatter(ot[['pca_1']], ot[['pca_2']], s=50, linewidth=0, c='yellow', alpha=1, label='Test outliers')
@@ -73,6 +73,7 @@ def plot_new_points(mrs):
 
 if __name__ == '__main__':
     mrs = 5
+    test_dataset = 'alias'
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     # bi_df_scaled = data_utils.scale(bi_df)
     # bi_df_scaled_unique = bi_df_scaled.drop_duplicates()
@@ -88,6 +89,6 @@ if __name__ == '__main__':
 
     # dbscan_plot(mrs, bi_df_pca_unique.values, core_samples_mask, n_clusters_, labels)
     dbscan_plot2(bi_df_pca_unique, outliers_unique.index, mrs)
-    plot_new_points(mrs)
+    plot_new_points(test_dataset, mrs)
     plt.show()
     print('done')
