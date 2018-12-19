@@ -83,15 +83,17 @@ def mix_bi_data(mrs, base, mix1, mix2):
 def do_transform(dataset, mrs, test_data):
     # training data
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
-    scaled_bi, scaler = data_utils.scale(bi_df)
+    # Using the correlation matrix is equivalent to standardizing each of the variables (to mean 0 and standard deviation 1).
+    # we want to use covariance matrix so don't scale the data
+    # scaled_bi, scaler = data_utils.scale(bi_df)
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
 
     # testing data
     labels = test_data[['label']]
     test_bi = test_data.drop(['label'], axis=1)
 
-    test_bi_scaled = scaler.transform(test_bi.values)
-    test_bi_pca = pca.transform(test_bi_scaled)
+    # test_bi_scaled = scaler.transform(test_bi.values)
+    test_bi_pca = pca.transform(test_bi.values)
     test_bi_pca_df = pd.DataFrame(data=test_bi_pca, index=test_data.index, columns=['pca_1', 'pca_2'])
     test_bi_pca_df['label'] = labels.values
     data_utils.save_dataframe_to_csv(test_bi_pca_df, dataset+'_testing_'+str(mrs)+'_pca')
@@ -99,7 +101,7 @@ def do_transform(dataset, mrs, test_data):
 
 
 if __name__ == '__main__':
-    dataset = 'alias'
+    dataset = 'nih'
     if dataset == 'nih':
         df = data_utils.get_nih()
     elif dataset == 'alias':

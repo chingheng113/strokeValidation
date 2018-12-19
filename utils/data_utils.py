@@ -101,9 +101,11 @@ def scale(x_data):
 
 def pca_reduction(data):
     pca = decomposition.PCA(n_components=2)
-    scaled_data, scaler = scale(data)
-    pca.fit(scaled_data)
-    transformed_data = pca.transform(scaled_data)
+    # Using the correlation matrix is equivalent to standardizing each of the variables (to mean 0 and standard deviation 1).
+    # we want to use covariance matrix so don't scale the data
+    # scaled_data, scaler = scale(data)
+    pca.fit(data)
+    transformed_data = pca.transform(data)
     df_pca = pd.DataFrame(transformed_data, columns=['pca_1', 'pca_2'], index=data.index)
     return df_pca, pca
 

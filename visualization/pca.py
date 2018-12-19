@@ -2,13 +2,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import decomposition
 from utils import data_utils
-from sklearn.preprocessing import scale
+from sklearn.preprocessing import scale, StandardScaler
 from pandas.core.frame import DataFrame
 
 
 def do_pca(data, labels):
     pca = decomposition.PCA(n_components=10)
-    data = scale(data)
+    # Using the correlation matrix is equivalent to standardizing each of the variables (to mean 0 and standard deviation 1).
+    # we want to use covariance matrix so don't scale the data
+    # data = scale(data)
     pca.fit(data)
     # Variance explains
     va = pca.explained_variance_ratio_
@@ -16,6 +18,7 @@ def do_pca(data, labels):
     # Cumulative Variance explains
     va1 = np.cumsum(np.round(pca.explained_variance_ratio_, decimals=4)*100)
     print(va1)
+
     '''
     plt.plot(va1)
     '''
