@@ -164,6 +164,15 @@ def show_performance(label, prediction):
     return sensitivity, specificity, accuracy
 
 
+def save_array_to_csv(file_name, title, patients_dic):
+    write_file_path = get_file_path(file_name+'.csv')
+    with open(write_file_path, 'w') as write_csv:
+        w = csv.DictWriter(write_csv, title)
+        w.writeheader()
+        for d in patients_dic.keys():
+            p_dic = patients_dic[d]
+            w.writerow(p_dic)
+
 if __name__ == '__main__':
 
     print('Done')

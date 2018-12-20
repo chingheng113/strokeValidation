@@ -25,7 +25,7 @@ def violin_plot(data):
     plt.show()
 
 if __name__ == '__main__':
-    df = data_utils.get_ischemic('TSR_cleaned.csv')
+    df = data_utils.get_ischemic('TSR_2017.csv')
     # df = data_utils.get_nih()
     n = 'NIHSS_Total'
     b = 'Barthel_Total'
