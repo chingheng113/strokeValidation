@@ -19,9 +19,16 @@ def bubble_plot(data, group_names):
     plt.ylabel(group_names[1])
     plt.show()
 
+
 def violin_plot(data):
     sns.violinplot(data.iloc[: ,0], data.iloc[:, 1], orient='v')
     sns.despine()
+    plt.show()
+
+
+def see_plot(data):
+    data = data[data['discharged_mrs'] == 1]
+    plt.boxplot(data.iloc[: ,1])
     plt.show()
 
 if __name__ == '__main__':
@@ -31,5 +38,7 @@ if __name__ == '__main__':
     b = 'Barthel_Total'
     m = 'discharged_mrs'
     df_nbm = df[[n, b, m]]
-    bubble_plot(df_nbm[[m, b]], [m, b])
-    violin_plot(df_nbm[[m, b]])
+    df_nbm = df_nbm[~((df_nbm.discharged_mrs == 0) & (df_nbm.Barthel_Total == 0))]
+    see_plot(df_nbm[[m, b]])
+    # bubble_plot(df_nbm[[m, b]], [m, b])
+    # violin_plot(df_nbm[[m, b]])

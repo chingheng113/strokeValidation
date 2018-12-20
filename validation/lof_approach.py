@@ -81,6 +81,6 @@ if __name__ == '__main__':
     plot_lof(bi_df_pca_unique, outliers_unique.index, mrs)
 
     clf_predict = LocalOutlierFactor(n_neighbors=k_neighbors, contamination=outliers_fraction, novelty=True).fit(bi_df_pca_unique.drop(['label'], axis=1))
-    print(predict_new_points(test_dataset, clf_predict, mrs))
+    # print(predict_new_points(test_dataset, clf_predict, mrs))
     plt.show()
     print('done')

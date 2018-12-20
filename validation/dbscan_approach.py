@@ -72,7 +72,7 @@ def plot_new_points(test_dataset, mrs):
 
 
 if __name__ == '__main__':
-    mrs = 5
+    mrs = 0
     test_dataset = 'alias'
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     # bi_df_scaled = data_utils.scale(bi_df)
@@ -80,7 +80,7 @@ if __name__ == '__main__':
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
-    db, labels, core_samples_mask, n_clusters_ = dbscan_validation(bi_df_pca_unique, 1.3, 6)
+    db, labels, core_samples_mask, n_clusters_ = dbscan_validation(bi_df_pca_unique, 2.5, 11)
     data_labeled_all, data_labeled_unique = data_utils.label_data(bi_df, bi_df_pca_unique, labels)
 
     # data_utils.save_dataframe_to_csv(data_labeled_unique, 'dbscan_'+str(mrs))
@@ -89,6 +89,6 @@ if __name__ == '__main__':
 
     # dbscan_plot(mrs, bi_df_pca_unique.values, core_samples_mask, n_clusters_, labels)
     dbscan_plot2(bi_df_pca_unique, outliers_unique.index, mrs)
-    plot_new_points(test_dataset, mrs)
+    # plot_new_points(test_dataset, mrs)
     plt.show()
     print('done')

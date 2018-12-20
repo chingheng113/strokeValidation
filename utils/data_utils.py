@@ -43,11 +43,11 @@ def load_all(fn):
 
 def get_tsr(target, subtype):
     if subtype == 'is':
-        df = get_ischemic('TSR_cleaned.csv')
+        df = get_ischemic('TSR_2017_cleaned.csv')
     elif subtype == 'he':
-        df = get_hemorrhagic('TSR_cleaned.csv')
+        df = get_hemorrhagic('TSR_2017cleaned.csv')
     else:
-        df = load_all('TSR_cleaned.csv')
+        df = load_all('TSR_2017_cleaned.csv')
     if target != '':
         df = df[df['discharged_mrs'] == target]
     id_df = df.iloc[:, 0:1]

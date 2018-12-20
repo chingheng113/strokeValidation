@@ -9,8 +9,8 @@ import math
 # https://hdbscan.readthedocs.io/en/latest/prediction_tutorial.html
 
 
-def hdbscan_validation(X, mClust, mSample):
-    clusterer = hdbscan.HDBSCAN(min_cluster_size=mClust, min_samples=mSample, prediction_data=True).fit(X)
+def hdbscan_validation(X, mClust):
+    clusterer = hdbscan.HDBSCAN(min_cluster_size=mClust, prediction_data=True).fit(X)
     # print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, clusterer.labels_))
     return clusterer
 
@@ -38,6 +38,7 @@ def plot_hdbscan(X, outliers_inx, n):
     legend = plt.legend(loc='upper left')
     legend.legendHandles[0]._sizes = [10]
     legend.legendHandles[1]._sizes = [20]
+    # plt.scatter(-0.97365, 0.07826, s=50, linewidth=0, c='orange', alpha=1)
 
 
 def predict_new_points(test_dataset, clusterer, mrs):
@@ -62,16 +63,15 @@ def predict_new_points(test_dataset, clusterer, mrs):
 
 
 if __name__ == '__main__':
-    mrs = 5
+    mrs = 0
     test_dataset = 'nih'
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
-    # mSample = int(round(bi_df_pca_unique.shape[0] * 0.05, 0))
     mSample = math.floor(math.log(bi_df_pca_unique.shape[0], 10))
-    clusterer = hdbscan_validation(bi_df_pca_unique, 3*mSample, 3*mSample)
+    clusterer = hdbscan_validation(bi_df_pca_unique, 3)
 
     # plot_outlier_distribution(clusterer)
     # score_label = make_score_label(bi_df_pca_unique, clusterer, 0.9)
@@ -83,9 +83,8 @@ if __name__ == '__main__':
 
     plot_hdbscan(bi_df_pca, outliers_all.index, mrs)
 
-    print(predict_new_points(test_dataset, clusterer, mrs))
+    # print(predict_new_points(test_dataset, clusterer, mrs))
 
     plt.show()
     print(bi_df_pca_unique.shape[0])
-    print(mSample*3)
     print('done')
