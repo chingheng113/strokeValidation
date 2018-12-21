@@ -21,9 +21,19 @@ def iqr(df):
     print(Q1 - 1.5 * IQR)
     print(Q3 + 1.5 * IQR)
 
+
+def frequency_outlier(df):
+    df_sub = df[df.discharged_mrs == 0]
+    frequency = df_sub.groupby('Barthel_Total').size()
+    frequency_log = np.log(frequency)
+
+    print(frequency.describe())
+    print(frequency.quantile(0.95))
+
 if __name__ == '__main__':
     df = data_utils.load_all('TSR_2017.csv')
     print(df.shape)
     df = basic_filter(df)
+    frequency_outlier(df)
     # df = iqr(df)
-    data_utils.save_dataframe_to_csv(df, 'TSR_2017_cleaned')
+    # data_utils.save_dataframe_to_csv(df, 'TSR_2017_cleaned')

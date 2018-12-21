@@ -28,7 +28,9 @@ def violin_plot(data):
 
 def see_plot(data):
     data = data[data['discharged_mrs'] == 1]
-    plt.boxplot(data.iloc[: ,1])
+    # bi_totoal = data.iloc[: ,1]
+    # plt.hist(bi_totoal, bins='auto')
+    # data["Barthel_Total"].apply(np.log).hist()
     plt.show()
 
 if __name__ == '__main__':
