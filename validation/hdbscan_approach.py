@@ -64,7 +64,7 @@ def predict_new_points(test_dataset, clusterer, mrs):
 
 if __name__ == '__main__':
     mrs = 0
-    test_dataset = 'nih'
+    test_dataset = 'alias'
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
@@ -83,7 +83,7 @@ if __name__ == '__main__':
 
     plot_hdbscan(bi_df_pca, outliers_all.index, mrs)
 
-    # print(predict_new_points(test_dataset, clusterer, mrs))
+    print(predict_new_points(test_dataset, clusterer, mrs))
 
     plt.show()
     print(bi_df_pca_unique.shape[0])

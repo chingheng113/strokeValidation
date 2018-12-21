@@ -101,7 +101,7 @@ def do_transform(dataset, mrs, test_data):
 
 
 if __name__ == '__main__':
-    dataset = 'nih'
+    dataset = 'alias'
     if dataset == 'nih':
         df = data_utils.get_nih()
     elif dataset == 'alias':
@@ -117,7 +117,6 @@ if __name__ == '__main__':
     print(df.shape)
     df_clean = basic_filter(df)
     print(df_clean.shape)
-    data_utils.save_dataframe_to_csv(df_clean, 'aa.csv')
     df_0 = df_clean[df_clean['discharged_mrs'] == 0]
     print(df_0.shape)
     df_1 = df_clean[df_clean['discharged_mrs'] == 1]

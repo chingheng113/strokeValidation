@@ -44,7 +44,7 @@ def lof_see(X, test_bi_pca, labels, min_samples):
 
 
 if __name__ == '__main__':
-    mrs = 1
+    mrs = 0
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
