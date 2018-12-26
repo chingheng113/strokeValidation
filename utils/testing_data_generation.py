@@ -82,7 +82,7 @@ def mix_bi_data(mrs, base, mix1, mix2):
 
 def do_transform(dataset, mrs, test_data):
     # training data
-    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
+    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, '')
     # Using the correlation matrix is equivalent to standardizing each of the variables (to mean 0 and standard deviation 1).
     # we want to use covariance matrix so don't scale the data
     # scaled_bi, scaler = data_utils.scale(bi_df)
@@ -131,6 +131,7 @@ if __name__ == '__main__':
     print(df_5.shape)
 
     mixed_0 = mix_bi_data(0, df_0, df_4, df_5)
+    data_utils.save_dataframe_to_csv(mixed_0, dataset+'_testing_0'+'_org')
     do_transform(dataset, 0, mixed_0)
 
     mixed_1 = mix_bi_data(1, df_1, df_4, df_5)

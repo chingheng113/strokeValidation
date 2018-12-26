@@ -73,14 +73,14 @@ def plot_new_points(test_dataset, mrs):
 
 if __name__ == '__main__':
     mrs = 0
-    test_dataset = 'alias'
-    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
+    test_dataset = 'nih'
+    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, '')
     # bi_df_scaled = data_utils.scale(bi_df)
     # bi_df_scaled_unique = bi_df_scaled.drop_duplicates()
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
-    db, labels, core_samples_mask, n_clusters_ = dbscan_validation(bi_df_pca_unique, 2.5, 30)
+    db, labels, core_samples_mask, n_clusters_ = dbscan_validation(bi_df_pca_unique, 0.5, 11)
     data_labeled_all, data_labeled_unique = data_utils.label_data(bi_df, bi_df_pca_unique, labels)
 
     # data_utils.save_dataframe_to_csv(data_labeled_unique, 'dbscan_'+str(mrs))
