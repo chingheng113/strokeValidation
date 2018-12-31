@@ -71,7 +71,7 @@ if __name__ == '__main__':
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
     mSample = math.floor(math.log(bi_df_pca_unique.shape[0], 10))
-    clusterer = hdbscan_validation(bi_df_pca_unique, 3)
+    clusterer = hdbscan_validation(bi_df_pca_unique, 4)
 
     # plot_outlier_distribution(clusterer)
     # score_label = make_score_label(bi_df_pca_unique, clusterer, 0.9)

@@ -9,7 +9,7 @@ from scipy.stats import gamma
 def basic_filter(df):
     df = df[~(df['discharged_mrs'] == 6)]
     df = df[~((df['Barthel_Total'] == 0) & (df['discharged_mrs'] < 4))]
-    df = df[~((df['Barthel_Total'] < 90) & (df['discharged_mrs'] == 0))]
+    # df = df[~((df['Barthel_Total'] < 90) & (df['discharged_mrs'] == 0))]
     # https://www.ahajournals.org/doi/abs/10.1161/01.str.30.8.1538
     # df = df[~((df['Barthel_Total'] > 60) & (df['discharged_mrs'] > 3))]
     # df = df[~((df['Barthel_Total'] < 59) & (df['discharged_mrs'] < 4))]
@@ -70,7 +70,7 @@ def hist_break(df, mrs):
     ax.hist(df_sub.Barthel_Total, bins=bins)
     ax2.hist(df_sub.Barthel_Total, bins=bins)
 
-    ax.set_ylim(1000, 10000)  # outliers only
+    ax.set_ylim(2000, 10000)  # outliers only
     ax2.set_ylim(0, 200)  # most of the data
     ax.spines['bottom'].set_visible(False)
     ax2.spines['top'].set_visible(False)
@@ -116,8 +116,8 @@ if __name__ == '__main__':
     df = basic_filter(df)
     # boxplot(df)
     mrs = 0
-    # hist_org(df, mrs)
-    # hist_break(df, mrs)
+    hist_org(df, mrs)
+    hist_break(df, mrs)
     # hist_log(df, mrs)
     # df = iqr(df)
-    data_utils.save_dataframe_to_csv(df, 'TSR_2017_cleaned')
+    # data_utils.save_dataframe_to_csv(df, 'TSR_2017_cleaned')
