@@ -17,11 +17,13 @@ if __name__ == '__main__':
 
     data_dm = data_utils.load_all('TNK-dm.csv')
     data_dm = data_dm[['VisitID', 'PtID', 'BirthDate', 'Gender', 'OnsetDate']]
-    b_day = pd.to_datetime(data_dm['BirthDate'], format='%m/%d/%YYYY', errors='coerce')
-    onset_day = pd.to_datetime(data_dm['OnsetDate'], format='%m/%d/%YYYY', errors='coerce')
-    AGE = np.floor((onset_day - b_day) / pd.Timedelta(days=365))
+    b_day = pd.to_datetime(data_dm['BirthDate'], format='%m/%d/%Y %H:%M', errors='coerce')
+    onset_day = pd.to_datetime(data_dm['OnsetDate'], format='%m/%d/%Y %H:%M', errors='coerce')
+    data_dm['onset_age'] = np.floor((onset_day - b_day) / pd.Timedelta(days=365))
+    data_dm = data_dm.drop(['BirthDate', 'OnsetDate'], axis=1).rename(columns={'Gender':'GENDER_TX'})
 
-
-    result = pd.merge(data_bi, data_mrs, how='right', on=['VisitID', 'PtID']).dropna().rename(columns={'PtID':'CASE_ID'}).drop(['VisitID'], axis=1)
+    result = pd.merge(data_bi, data_mrs, how='right', on=['VisitID', 'PtID']).dropna()
+    result = pd.merge(data_dm, result, how='right', on=['PtID']).dropna()
+    result = result.rename(columns={'PtID':'CASE_ID'}).drop(['VisitID_x', 'VisitID_y'], axis=1)
     data_utils.save_dataframe_to_csv(result, 'TNK')
     print('done')
