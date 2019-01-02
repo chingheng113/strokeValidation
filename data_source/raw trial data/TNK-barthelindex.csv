@@ -1,0 +1,288 @@
+,StudyID,VisitID,PtID,CompletedBy,CompletedDate,Notes,CollectDate,TeleInterview,Feeding,Transfer,Grooming,Toilet use,Bathing,Mobility_a,Mobility_b,Stairs,Dressing,Bowels,Bladder,AdminName,InfoProvider,CalcTotalStore
+0,1,5,1,Martha Davis,3/14/2006 0:00,,3/14/2006 13:35,0,10,5,5,5,0,-9,5,0,5,10,10,Martha Davis,patient,55
+1,1,5,2,Nichole Porche-Taylor,5/12/2006 0:00,,5/12/2006 8:30,0,0,0,0,0,0,-9,0,0,0,0,0,Nichole Porche,Patient's nurse,0
+2,1,5,3,Nichole Porche-Taylor,5/26/2006 0:00,,5/26/2006 15:00,0,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,subject,100
+3,1,5,4,Jo Bell,6/5/2006 0:00,,6/5/2006 10:05,0,10,15,5,10,5,15,-9,10,10,10,10,Justin Sattin,subject,100
+4,1,5,5,Nichole Porche-Taylor,6/14/2006 0:00,,6/14/2006 14:00,0,10,15,5,10,5,15,5,10,10,10,10,Nichole Porche-Taylor,subject,100
+5,1,5,6,Nichole Porche-Taylor,6/21/2006 0:00,,6/21/2006 8:00,0,0,0,0,0,0,-9,0,0,0,0,0,Nichole Porche,Nurse/research coordinator,0
+6,1,5,7,Marcus Chacon,6/26/2006 0:00,,6/26/2006 11:50,0,5,5,0,5,0,10,-9,5,5,10,5,Marcus Chacon,patient,50
+7,1,5,8,Martha Davis,7/17/2006 0:00,,7/14/2006 15:40,0,5,0,5,0,0,-9,0,0,5,10,5,Martha Davis,patient,30
+8,1,5,9,Nichole Porche-Taylor,7/18/2006 0:00,,7/18/2006 9:00,0,5,5,5,5,0,10,-9,0,5,10,5,Nichole Porche-Taylor,Patient's nurse,50
+9,1,5,10,Brown,7/21/2006 0:00,,7/21/2006 9:30,0,5,5,5,0,0,-9,0,0,0,10,10,Brown,Patient,35
+10,1,5,12,Martha Davis,8/2/2006 0:00,,8/1/2006 15:40,0,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+11,1,5,13,Jo Bell,8/8/2006 0:00,,8/8/2006 11:25,0,10,5,5,5,0,10,5,0,5,10,10,Jo Bell,subject,60
+12,1,5,14,Nichole Porche-Taylor,8/15/2006 0:00,,8/15/2006 11:16,0,5,5,5,5,0,-9,0,0,0,10,10,Nichole Porche-Taylor,Patient,40
+13,1,5,15,Jo Bell,8/17/2006 0:00,,8/17/2006 9:12,0,5,5,0,0,0,-9,0,0,0,0,5,Jo Bell,subject,15
+14,1,5,16,Nichole Porche-Taylor,8/22/2006 0:00,,8/22/2006 9:00,0,5,5,5,0,0,-9,0,0,0,5,10,Nichole Porche-Taylor,subject,30
+15,1,5,18,Nichole Porche-Taylor,9/18/2006 0:00,,9/18/2006 12:24,0,10,15,5,10,5,15,-9,0,10,10,10,Nichole Porche-Taylor,Subject,90
+16,1,5,20,Nichole Porche-Taylor,9/19/2006 0:00,,9/19/2006 15:42,0,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,subject,100
+17,1,5,21,Rafael Llinis,9/20/2006 0:00,,9/20/2006 13:15,0,10,5,5,5,0,10,-9,5,5,10,10,Rafael Llinis,Patient,65
+18,1,5,22,Matha Davis,9/27/2006 0:00,,9/26/2006 14:30,0,10,15,5,10,5,15,-9,5,10,10,10,Matha Davis,Patient,95
+19,1,5,23,Jo Bell,9/27/2006 0:00,,9/27/2006 14:01,0,0,0,0,0,0,-9,0,0,0,0,0,Akram Shhadeh,Nursing staff member,0
+20,1,5,24,Martha Davis,10/24/2006 0:00,,10/24/2006 15:00,0,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,Patient,100
+21,1,5,25,Jo Bell,11/14/2006 0:00,,11/13/2006 17:40,0,0,0,0,0,0,-9,0,0,0,5,5,Marcus Chacon,Nursing Staff,10
+22,1,5,26,Nichole Porche-Taylor,11/28/2006 0:00,,11/28/2006 11:03,0,10,15,5,10,5,15,-9,5,10,10,10,Sheryl Martin-Schild,Subject,95
+23,1,5,27,Janet Werner,12/1/2006 0:00,,12/1/2006 12:00,0,10,15,5,10,5,15,-9,10,10,10,10,Janet Werner,Patient,100
+24,1,5,28,R Gonzaga-Camfield,12/6/2006 0:00,,12/1/2006 10:00,0,0,0,0,0,0,-9,0,0,0,0,0,R Gonzaga-Camfield,R Gonzaga-Camfield,0
+25,1,5,30,Jo Bell,12/13/2006 0:00,,12/12/2006 16:54,0,5,5,0,0,0,-9,0,0,0,0,0,Marcus Chacon,Subject,10
+26,1,5,31,Nichole Porche-Taylor,12/18/2006 0:00,,12/15/2006 16:00,0,5,0,5,5,0,-9,0,0,5,10,10,Nichole Porche-Taylor,"Nurser, Patient, Chart",40
+27,1,5,32,Jo Bell,12/18/2006 0:00,,12/15/2006 16:12,0,0,0,0,0,0,-9,0,0,0,0,0,Marcus Chacon,Nursing Staff Member,0
+28,1,5,33,Martha Davis,1/4/2007 0:00,,1/4/2007 12:00,0,5,10,5,10,0,15,-9,5,5,10,10,Martha Davis,patient & wife,75
+29,1,5,37,Janet Werner,2/6/2007 0:00,,1/28/2007 13:00,0,5,5,0,0,0,-9,0,0,0,0,0,Sean Evans,Patient,10
+30,1,5,38,Nichole Porche-Taylor,2/12/2007 0:00,,2/9/2007 11:20,0,10,15,5,10,5,15,-9,10,10,5,5,"Mary Jane Hess, RN",patient and daughter,90
+31,1,5,39,Jo Bell,2/23/2007 0:00,,2/22/2007 15:15,0,10,15,5,10,5,15,-9,10,10,10,10,Carol Greenwald,Patient,100
+32,1,5,40,Brown,3/9/2007 0:00,,3/9/2007 13:55,0,10,15,5,10,5,15,-9,10,10,10,10,Brown,patient,100
+33,1,5,43,Brown,3/12/2007 0:00,,3/9/2007 14:15,0,10,10,5,10,5,10,-9,5,10,0,0,Brown,patient,65
+34,1,5,44,Nichole Porche-Taylor,3/27/2007 0:00,,3/26/2007 17:57,0,0,5,0,0,0,-9,0,0,0,10,10,Nichole Porche-Taylor,"Nurse, Patient",25
+35,1,5,45,Nichole Porche-Taylor,3/23/2007 0:00,,3/23/2007 15:45,0,10,15,0,10,0,15,-9,10,5,10,10,Nichole Porche-Taylor,subject,85
+36,1,5,46,R. Gonzaga-Camfiled,4/2/2007 0:00,,4/2/2007 11:00,1,10,15,5,10,5,15,-9,10,10,10,10,Miss Claire- visiting nurse,Miss Claire- visiting nurse,100
+37,1,5,47,Jo Bell,4/2/2007 0:00,,4/1/2007 8:10,0,5,10,5,5,0,10,-9,5,5,10,10,Thomas Hemmen,Subject,65
+38,1,5,48,Nichole Porche-Taylor,4/9/2007 0:00,,4/6/2007 11:55,0,10,15,5,10,5,15,-9,10,10,10,10,Doralene Smith,Subject,100
+39,1,5,49,Nichole Porche-Taylor,4/6/2007 0:00,,4/6/2007 10:07,0,10,15,5,10,5,15,-9,10,10,10,10,Nicole Gonzales,Subject,100
+40,1,5,50,Nichole Porche-Taylor,6/6/2007 0:00,,5/16/2007 8:43,0,10,15,5,10,5,15,-9,5,10,10,10,Nichole Porche-Taylor,Subject and her granddaughter,95
+41,1,5,52,Janice Alt,4/11/2007 0:00,,4/11/2007 13:00,1,10,15,5,10,5,10,-9,5,10,10,10,Janice Alt,Patient,90
+42,1,5,54,Martha Davis,4/20/2007 0:00,,4/19/2007 16:30,0,5,0,5,0,0,-9,5,0,0,0,0,Martha Davis,patient; significant other,15
+43,1,5,56,Jo Bell,4/30/2007 0:00,,4/30/2007 10:27,0,10,15,5,10,5,15,-9,10,10,10,10,Jo Bell,subject,100
+44,1,5,57,Martha Davis,5/22/2007 0:00,,5/17/2007 16:00,0,10,15,5,10,5,15,-9,10,10,10,10,Daniel Chernavvsky,Patient,100
+45,1,5,58,Janice Alt,5/31/2007 0:00,,5/31/2007 16:00,0,5,10,0,5,0,10,-9,0,0,10,10,Janice Alt,care giver,50
+46,1,5,60,Loren Shen,6/5/2007 0:00,,6/5/2007 10:47,0,10,0,5,0,0,-9,0,0,0,10,0,Loren Shen,Nurse,25
+47,1,5,61,Kate Maddox,6/15/2007 0:00,,6/15/2007 8:40,0,10,15,5,10,5,15,-9,10,10,10,10,Kate Maddox,subject 0006,100
+48,1,5,62,Nichole Porche-Taylor,6/26/2007 0:00,,6/26/2007 15:31,0,10,15,5,10,5,10,-9,0,10,10,10,Nichole Porche-Taylor,subject,85
+49,1,5,63,Nichole Porche-Taylor,7/9/2007 0:00,,7/6/2007 10:43,0,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,subject,100
+50,1,5,65,Jo Bell,8/16/2007 0:00,,8/13/2007 11:30,0,10,5,5,5,0,10,-9,0,5,10,10,Samuel Yip,Patient,60
+51,1,5,66,Kate Maddox,9/4/2007 0:00,Subject is in a subacute facility for rehabilitation. We were unable to get information over Labor Day weekend (9/1-9/3)/ Day 12 (9/4/07) was the first day we were able to get patient information.,9/4/2007 9:15,1,5,10,5,5,0,10,-9,0,0,10,10,Kate Maddox,Jody- nurse at assisted living,55
+52,1,5,67,R. Gonzaga-Camfield,9/17/2007 0:00,,9/14/2007 10:00,0,5,0,0,0,0,-9,0,0,0,5,5,Rosario Gonzaga-Camfield,"Desire Gaines, RN- primary nurse",15
+53,1,5,69,Marietta A.Manlulu,9/28/2007 0:00,,9/28/2007 14:30,0,0,0,0,0,0,-9,0,0,0,0,0,Marietta A.Manlulu,NA. pt still hospitalized,0
+54,1,5,70,Hen Hallevi,10/1/2007 0:00,,10/1/2007 11:00,0,10,15,5,10,5,15,-9,10,10,10,10,Hen Hallevi,subject,100
+55,1,5,71,Martha Davis,10/16/2007 0:00,,10/12/2007 12:00,0,0,0,0,0,0,-9,0,0,0,0,0,Martha Davis,Martha Davis/ chart review,0
+56,1,5,73,Doralene B Smith,11/5/2007 0:00,,11/5/2007 10:40,0,5,15,5,10,5,15,-9,10,10,10,10,Doralene B Smith,patient,95
+57,1,5,74,Martha Davis,11/13/2007 0:00,,11/12/2007 14:30,0,10,10,5,5,5,10,-9,5,0,10,10,Martha Davis,patient and chart,70
+58,1,5,75,Doralene B Smith,11/27/2007 0:00,,11/27/2007 10:45,0,10,15,5,10,5,15,-9,10,10,10,10,Doralene B Smith,patient,100
+59,1,5,76,Darin Zahoranec,12/24/2007 0:00,,12/24/2007 8:45,0,0,0,0,0,0,10,-9,0,0,0,0,Darin Zahoranec,"Nurse, Catherine Slomiany",10
+60,1,5,77,Janice Alt,12/28/2007 0:00,,12/28/2007 14:00,0,5,15,5,5,0,10,-9,5,5,10,10,Janice Alt,Family of patient,70
+61,1,5,78,Jo Bell,1/9/2008 0:00,,1/9/2008 8:40,0,10,15,5,10,5,15,-9,10,10,10,10,Samuel Yip,patient,100
+62,1,5,79,Matha Davis,1/17/2008 0:00,,1/15/2008 15:15,0,10,15,5,10,5,15,-9,10,10,10,10,Matha Davis,patient,100
+63,1,5,80,Kate Maddox,1/17/2008 0:00,,1/17/2008 10:35,0,10,15,5,10,5,15,-9,10,10,10,10,Kate Maddox,subject,100
+64,1,5,81,Martha Davis,1/22/2008 0:00,,1/22/2008 11:00,0,10,15,5,10,0,15,-9,10,5,10,10,Martha Davis,patient,90
+65,1,5,83,R Gonzaga Camfield,2/11/2008 0:00,,2/11/2008 10:30,0,5,5,0,5,0,-9,0,0,0,5,5,R Gonzaga Camfield,R Gonzaga Camfield,25
+66,1,5,87,Janice Alt,2/14/2008 0:00,,2/15/2008 11:00,1,5,0,5,10,0,-9,0,0,5,10,5,Janice Alt,daughter,40
+67,1,5,89,Janet Werner,3/6/2008 0:00,,3/6/2008 12:41,0,10,15,5,10,5,15,-9,10,10,10,10,review of medical records,Dr. Koenig,100
+68,1,5,90,Martha Davis,3/4/2008 0:00,,3/4/2008 12:00,0,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+69,1,5,91,Susan Alderman,3/28/2008 0:00,,3/24/2008 11:15,0,10,10,5,5,0,15,-9,0,10,10,10,Hen Hallevi,patient,75
+70,1,5,98,Carol Greenwald,4/30/2008 0:00,still has leg bag for question of urinary retention. 250-750 CC residual when in hospital to see urologist next week. Leg bag currently leaking.,4/30/2008 13:40,0,10,15,5,10,5,15,-9,10,10,10,10,Carol Greenwald,Patient,100
+71,1,5,100,Susan Alderman,5/9/2008 0:00,,5/9/2008 10:00,0,0,0,5,0,0,-9,0,0,0,5,0,Susan Alderman,Allison Cox,10
+72,1,5,101,Loren Shen,5/15/2008 0:00,,5/15/2008 10:40,0,10,15,5,10,5,15,-9,5,10,5,10,Loren Shen,patient,90
+73,1,5,105,Martha Davis,5/28/2008 0:00,,5/27/2008 16:00,0,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+74,1,5,106,R Gonzaga-Camfield,5/29/2008 0:00,,5/28/2008 11:00,0,10,15,5,10,0,10,-9,5,10,10,10,R Gonzaga-Camfield,subject,85
+75,1,5,107,Susan Alderman,6/9/2008 0:00,,6/9/2008 10:55,0,10,15,5,10,5,15,-9,10,10,10,10,Susan Alderman,patient,100
+76,1,5,108,Susan Alderman,6/10/2008 0:00,,6/10/2008 11:05,0,10,15,5,10,5,15,-9,10,10,10,10,Susan Alderman,patient,100
+77,1,5,109,Martha Davis,6/16/2008 0:00,,6/12/2008 11:30,0,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+78,1,5,111,Kristi Malleck,6/26/2008 0:00,,6/26/2008 13:51,0,10,15,5,10,5,15,-9,10,10,10,10,Kristi Malleck,patient,100
+79,1,5,112,Carol Greenwald,6/30/2008 0:00,,6/30/2008 15:05,0,10,15,5,10,5,15,-9,10,10,10,10,Carol Greenwald,Patient and spouse,100
+80,1,5,113,Janice Alt,7/7/2008 0:00,,7/7/2008 13:00,1,10,15,5,10,5,15,-9,5,5,10,10,Janice Alt,nurse,90
+81,1,5,115,Marietta A. Manlulu,7/11/2008 0:00,,7/11/2008 15:00,1,10,15,5,10,5,15,-9,10,10,10,10,Marietta A. Manlulu,patient's son,100
+82,1,5,116,Kate Maddox,7/17/2008 0:00,,7/17/2008 13:30,0,0,0,0,0,0,-9,0,0,0,0,0,Kate Maddox,stroke unit nurse,0
+83,1,5,117,Loralee Nguyen,7/22/2008 0:00,,7/16/2008 12:15,0,10,15,5,5,0,10,-9,0,5,10,10,Mary Jane Hess,patient,70
+84,1,5,118,R. Gonzaga-Camfield,7/31/2008 0:00,,7/23/2008 8:00,0,0,0,0,0,0,-9,0,0,0,0,0,R. Gonzaga-Camfield,"Ann Conther, RN",0
+85,1,5,119,Martha Davis,7/31/2008 0:00,,7/28/2008 11:00,0,5,10,5,5,0,10,-9,0,5,5,10,Martha Davis,Martha Davis,55
+86,1,5,120,kate Maddox,7/28/2008 0:00,,7/28/2008 15:00,0,5,0,0,0,0,-9,0,0,0,0,0,kate Maddox,patients son,5
+87,1,5,121,Kate Maddox,8/1/2008 0:00,,8/1/2008 11:15,1,10,15,5,10,5,15,5,10,10,10,10,Kate Maddox,wife,100
+88,1,5,122,Loralee C. Nguyen,8/27/2008 0:00,,8/13/2008 10:14,0,0,0,0,0,0,-9,0,0,0,0,0,Loren Shen,patient's nurse,0
+89,1,5,123,Teresa Rzesiewicz,8/13/2008 0:00,,8/12/2008 15:15,0,10,10,5,10,5,15,-9,5,5,10,10,Wendy Brown,patient,85
+90,1,5,124,Sandra Augustine,8/15/2008 0:00,,8/15/2008 12:27,0,0,0,0,0,0,-9,0,0,0,0,0,Sandra Augustine,pt is in home this is done at bedside,0
+91,1,5,125,Loralee Nguyen,10/3/2008 0:00,,9/4/2008 10:30,0,0,5,0,0,0,-9,0,5,5,10,10,Loralee Nguygen,patient,35
+92,1,5,126,Carol Greenwald,9/11/2008 0:00,,9/11/2008 12:30,0,10,15,0,10,0,10,-9,0,5,10,5,Carol Greenwald,caregiver at skilled nursing facility,65
+93,1,5,127,Karen Rapp,9/17/2008 0:00,,9/11/2008 8:38,0,10,15,5,10,5,15,-9,10,10,10,10,Wendy Brown,patient,100
+94,1,5,128,Kristi Malleck,9/25/2008 0:00,,9/25/2008 11:51,0,10,15,5,10,5,15,-9,10,10,10,10,Kristi Malleck,patient,100
+95,1,5,129,Karen McCarthy,10/2/2008 0:00,,10/2/2008 15:55,0,10,15,5,10,5,15,-9,10,10,10,10,Karen McCarthy,patient,100
+96,1,5,130,Loralee Nguyen,10/13/2008 0:00,,10/13/2008 15:40,0,10,15,5,10,5,15,-9,10,10,10,10,Loralee Nguyen,patient,100
+97,1,5,132,Kristi Malleck,10/28/2008 0:00,,10/28/2008 10:06,0,10,15,5,10,5,15,-9,5,10,10,10,Kristi Malleck,patient,95
+98,1,5,133,Loralee Nguyen,11/10/2008 0:00,,11/10/2008 10:00,0,10,5,5,0,5,-9,5,0,5,10,10,Loralee Nguyen,patient,55
+99,1,5,134,Kate Maddox,11/26/2008 0:00,,11/26/2008 13:15,0,0,0,0,0,0,-9,0,0,0,0,0,Kate Maddox,occupational therapist,0
+100,1,5,135,Carol Greenwald,12/6/2008 0:00,,12/6/2008 14:45,0,10,10,5,5,0,10,-9,0,5,10,10,Carol Greenwald,RN taking care of patients at SnF/Rehab,65
+101,1,5,136,kristi Malleck,12/9/2008 0:00,,12/9/2008 10:47,0,5,10,0,5,0,-9,5,0,10,10,10,Kristi Malleck,caregivers (rehab therapist),55
+102,1,5,137,Carol Greenwald,12/16/2008 0:00,,12/16/2008 10:40,0,10,15,5,10,5,15,-9,0,10,5,10,Carol Greenwald,patient,85
+103,1,6,1,Martha Davis,4/11/2006 0:00,,4/10/2006 13:00,1,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,Patient,100
+104,1,6,3,Nichole Porche Taylor,6/29/2006 0:00,,6/29/2006 13:30,1,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche Taylor,subject,100
+105,1,6,4,Jo Bell,7/10/2006 0:00,,7/10/2006 14:16,1,10,15,5,10,5,15,-9,10,10,10,10,Jo Bell,Subject,100
+106,1,6,5,Nichole Porche-Taylor,7/19/2006 0:00,,7/19/2006 16:00,1,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,subject,100
+107,1,6,7,Jo Bell,8/2/2006 0:00,,8/2/2006 10:10,0,10,10,5,5,5,10,-9,5,5,5,5,Jo Bell,subject,65
+108,1,6,8,Martha Davis,8/17/2006 0:00,,8/16/2006 10:30,1,10,5,5,5,0,-9,5,0,5,10,10,Martha Davis,daughter,55
+109,1,6,9,Nichole Porche-Taylor,8/21/2006 0:00,,8/21/2006 9:00,1,0,5,5,5,0,-9,0,0,5,10,10,Nichole Porche-Taylor,Home health nurse,40
+110,1,6,10,Kate Maddox,8/28/2006 0:00,,8/28/2006 15:30,1,5,10,5,10,0,15,-9,0,5,10,10,Kate Maddox,spouse,70
+111,1,6,12,Martha Davis,8/29/2006 0:00,,8/29/2006 10:20,1,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+112,1,6,13,Jo Bell,9/15/2006 0:00,,9/15/2006 10:20,1,10,15,5,10,5,15,-9,10,10,10,10,Patient,Jo Bell,100
+113,1,6,14,Nichole Porche-Taylor,9/18/2006 0:00,,9/18/2006 16:14,1,5,5,5,5,5,-9,0,0,5,10,10,Nichole Porche-Taylor,Subject's wife,50
+114,1,6,15,Jo Bell,9/18/2006 0:00,,9/18/2006 11:12,1,5,5,0,5,0,-9,5,0,0,0,0,Jo Bell,Jo Bell,20
+115,1,6,18,Nichole Porche-Taylor,10/17/2006 0:00,,10/17/2006 15:57,1,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,Subject,100
+116,1,6,20,Nichole Porche-Taylor,10/25/2006 0:00,,10/25/2006 11:49,1,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,Subject,100
+117,1,6,21,Janice Alt,10/25/2006 0:00,"This is an inpatient due to cellulitis of both thighs. She was seen by me in her hospital room today instead of a phone call visit for her 6 week contact. 
+She is able to feed herself with her left hand although she is right handed. She is unable to",10/25/2006 13:00,0,5,15,5,10,0,10,-9,5,5,10,10,Janice Alt,Patient,75
+118,1,6,22,Martha Davis,10/26/2006 0:00,,10/26/2006 9:30,1,10,15,5,10,5,15,-9,5,10,10,10,Martha Davis,Patient,95
+119,1,6,23,Jo Bell,11/3/2006 0:00,,11/3/2006 9:37,0,0,0,0,0,0,-9,0,0,0,0,0,Jo Bell,care giver,0
+120,1,6,24,Martha Davis,11/20/2006 0:00,,11/20/2006 11:00,1,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,Patient,100
+121,1,6,25,Jo Bell,12/22/2006 0:00,,12/22/2006 10:35,1,0,0,0,0,0,-9,0,0,0,0,0,Jo Bell,nursing staff,0
+122,1,6,26,Nichole Porche-Taylor,12/27/2006 0:00,,12/27/2006 10:19,1,10,15,5,10,5,15,-9,0,10,10,10,Nichole Porche-Taylor,subject,90
+123,1,6,27,Janet Werner,1/9/2007 0:00,,1/9/2007 15:20,1,10,15,5,10,5,15,-9,10,10,10,10,Janet Werner,Daughter,100
+124,1,6,28,Rosario Gonzaga-Camfield,1/10/2007 0:00,,1/8/2007 13:00,1,0,0,0,0,0,-9,0,0,0,0,0,Rosario Gonzaga-Camfield,Susan Frisch,0
+125,1,6,30,Jo Bell,1/16/2007 0:00,,1/16/2007 11:06,1,5,5,0,5,0,10,-9,5,5,10,10,Jo Bell,Daughter,55
+126,1,6,31,Nichole Porche-Taylor,1/18/2007 0:00,,1/18/2007 10:36,1,10,15,5,10,5,15,-9,0,10,10,10,Nichole Porche-Taylor,Sbject,90
+127,1,6,32,Jo Bell,1/23/2007 0:00,,1/23/2007 10:12,1,0,0,0,0,0,-9,0,0,0,0,0,Jo Bell,Nursing Staff member,0
+128,1,6,33,Martha Davis,2/12/2007 0:00,,2/12/2007 12:30,1,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,Patient,100
+129,1,6,37,Janet Werner,3/5/2007 0:00,,3/5/2007 14:00,1,5,5,5,5,0,-9,5,0,0,10,10,Janet Werner,Patient,45
+130,1,6,38,Nichole Porche-Taylor,3/21/2007 0:00,,3/21/2007 12:16,1,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,daughter,100
+131,1,6,39,Jo Bell,4/2/2007 0:00,,4/2/2007 10:04,1,10,15,5,10,5,15,-9,10,10,10,10,Jo Bell,Subject,100
+132,1,6,40,Kate Maddox,4/18/2007 0:00,,4/18/2007 14:30,1,10,15,5,10,5,15,-9,10,10,10,10,Kate Maddox,subject 0004,100
+133,1,6,43,Brown,4/11/2007 0:00,,4/11/2007 10:10,0,10,15,5,10,5,15,-9,10,10,0,0,Brown,Patient,80
+134,1,6,44,Nichole Porche-Taylor,4/27/2007 0:00,,4/27/2007 12:04,1,0,0,0,0,0,-9,0,0,0,10,10,Nichole Porche-Taylor,Daughter,20
+135,1,6,45,Nichole Porche-Taylor,5/10/2007 0:00,,5/10/2007 9:40,1,5,15,0,10,0,15,-9,5,10,5,10,Nichole Porche-Taylor,Subject's daughter,75
+136,1,6,46,Rosario Gonzaga-Camfield,5/7/2007 0:00,,5/7/2007 17:00,1,10,15,5,10,5,15,-9,10,10,10,10,Rosario Gonzaga-Camfield,Grand daughter,100
+137,1,6,47,Jo Bell,5/8/2007 0:00,,5/8/2007 11:18,1,10,15,5,10,5,15,-9,10,10,10,10,Jo Bell,Husband,100
+138,1,6,48,Nichole Porche-Taylor,5/4/2007 0:00,,5/4/2007 16:37,1,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,Subject,100
+139,1,6,49,Nicole Gonzales,5/21/2007 0:00,,5/21/2007 15:37,1,10,15,5,10,5,15,-9,10,10,10,10,Nicole Gonzales,Wife,100
+140,1,6,50,Nichole Porche-Taylor,5/16/2007 0:00,,5/16/2007 9:04,0,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,Grandduaghter / Subject,100
+141,1,6,52,Janice Alt,5/13/2007 0:00,,5/13/2007 13:00,1,10,15,5,10,5,15,-9,0,5,10,10,Janice Alt,patient,85
+142,1,6,54,Martha Davis,5/22/2007 0:00,,5/17/2007 17:00,1,5,10,5,5,0,10,-9,5,5,10,10,Martha Davis,Patient and fiance,65
+143,1,6,56,Jo Bell,6/7/2007 0:00,,6/7/2007 8:12,1,10,15,5,10,5,10,-9,5,10,10,10,Jo Bell,Wife,90
+144,1,6,57,Martha Davis,6/18/2007 0:00,,6/17/2007 14:00,1,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+145,1,6,58,Janice Alt,7/2/2007 0:00,,7/2/2007 14:00,1,10,15,5,10,5,15,-9,10,10,10,10,Janice Alt,Patient,100
+146,1,6,60,Nichole Porche-Taylor,7/5/2007 0:00,,7/5/2007 9:31,1,10,5,5,5,0,-9,5,0,0,0,0,Nichole Porche-Taylor,son,30
+147,1,6,61,Kate Maddox,7/18/2007 0:00,,7/18/2007 14:07,1,10,15,5,10,5,15,-9,10,10,10,10,Kate Maddox,Subject 0006,100
+148,1,6,62,Nichole Porche-Taylor,7/20/2007 0:00,,7/20/2007 11:24,1,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,daughter,100
+149,1,6,63,Nichole Porche-Taylor,8/7/2007 0:00,,8/7/2007 12:15,1,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,suject,100
+150,1,6,65,Janet Werner,9/11/2007 0:00,,9/11/2007 16:00,1,10,5,5,5,0,10,-9,0,5,10,10,Janet Werner,nurse,60
+151,1,6,66,Kate Maddox,10/8/2007 0:00,,10/8/2007 14:30,1,5,10,5,5,0,-9,5,0,5,5,10,Kate Maddox,daughter,50
+152,1,6,67,Rosario Gonzaga-Camfield,10/19/2007 0:00,,10/19/2007 12:00,1,5,5,5,5,0,-9,0,0,0,5,5,Rosario Gonzaga-Camfield,patient daughter,30
+153,1,6,70,Doralene B Smith,11/6/2007 0:00,,11/6/2007 14:00,1,10,15,5,10,5,15,-9,10,10,10,10,Doralene B Smith,patient,100
+154,1,6,71,Martha Davis,11/12/2007 0:00,,11/9/2007 17:00,0,5,0,5,0,0,-9,0,0,0,5,5,Martha Davis,patient and family,20
+155,1,6,73,Doralene B. Smith,12/10/2007 0:00,,12/10/2007 11:00,1,5,15,5,10,5,15,-9,10,10,10,10,Doralene B. Smith,subject,95
+156,1,6,74,Martha Davis,12/21/2007 0:00,,12/19/2007 20:00,1,5,10,5,10,5,15,-9,5,10,10,10,Martha Davis,wife,85
+157,1,6,75,Doralene B. Smith,1/2/2008 0:00,,1/2/2008 15:00,1,10,15,5,10,5,15,-9,10,10,10,10,Doralene B. Smith,subject,100
+158,1,6,76,Kate Maddox,1/23/2008 0:00,,1/23/2008 14:00,0,10,10,0,0,0,-9,0,0,5,5,0,Kate Maddox,subject's wife,30
+159,1,6,78,Jo Bell,2/6/2008 0:00,,2/6/2008 11:23,1,10,15,5,10,5,15,-9,10,10,10,10,Jo Bell,Patient,100
+160,1,6,79,Martha Davis,2/12/2008 0:00,,2/12/2008 15:30,1,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+161,1,6,81,Martha Davis,2/26/2008 0:00,,2/26/2008 10:00,1,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+162,1,6,83,Rosario Gonzaga-Camfield,3/19/2008 0:00,,3/12/2008 13:10,1,10,0,5,0,0,-9,0,0,5,10,10,Marietta Manlulu,Patient,40
+163,1,6,87,Janice Alt,3/24/2008 0:00,,3/24/2008 11:34,1,10,5,5,5,5,10,-9,0,5,10,10,Janice Alt,daughter,65
+164,1,6,89,Janet Werner,3/31/2008 0:00,,3/31/2008 12:30,1,10,15,5,10,5,15,-9,10,10,10,10,Janet Werner,Peter Balestrueri,100
+165,1,6,90,Martha Davis,4/7/2008 0:00,,4/7/2008 11:30,1,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+166,1,6,91,Susan Alderman,4/29/2008 0:00,,4/29/2008 11:59,1,5,5,5,10,5,15,-9,0,10,10,10,Susan Alderman,son,75
+167,1,6,98,Carol Greenwald,5/28/2008 0:00,,5/28/2008 14:00,0,10,15,5,10,5,15,-9,10,10,10,5,Carol Greenwald,patient and wife,95
+168,1,6,100,Susan Alderman,6/11/2008 0:00,,6/6/2008 10:10,0,5,0,0,0,0,-9,5,0,0,10,10,Susan Alderman,patient,30
+169,1,6,101,Loren Shen,6/16/2008 0:00,,6/16/2008 16:00,1,10,15,5,10,5,15,-9,10,10,10,10,Loren Shen,patient,100
+170,1,6,105,Martha Davis,6/27/2008 0:00,,6/27/2008 10:00,1,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+171,1,6,106,Marietta A. Manlulu,7/9/2008 0:00,,7/9/2008 11:00,0,10,15,5,10,5,15,-9,10,10,10,10,Richard Libman,patient,100
+172,1,6,107,Susan Alderman,7/10/2008 0:00,,7/10/2008 9:45,1,10,15,5,10,5,15,-9,10,10,10,10,Susan Alderman,patient,100
+173,1,6,108,Susan Alderman,7/15/2008 0:00,,7/15/2008 10:32,1,10,15,5,10,5,15,-9,10,10,10,10,Susan Alderman,patient,100
+174,1,6,109,Martha Davis,7/10/2008 0:00,,7/10/2008 14:00,1,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+175,1,6,111,Kristi Malleck,7/25/2008 0:00,,7/25/2008 10:24,1,10,15,5,10,5,15,-9,10,10,10,10,Kristi Malleck,patient,100
+176,1,6,112,Kristi Malleck,7/28/2008 0:00,,7/28/2008 13:41,1,10,15,5,10,5,15,-9,10,10,10,10,Kristi Malleck,patient,100
+177,1,6,113,Janice Alt,8/5/2008 0:00,,8/5/2008 11:40,1,10,15,5,10,5,10,-9,5,10,10,10,Janice Alt,son,90
+178,1,6,115,Rosario Gonzaga-Camfiled,8/7/2008 0:00,,8/7/2008 11:00,1,10,15,5,10,5,15,-9,10,10,10,10,Rosario Gonzaga-Camfiled,Subject E-K,100
+179,1,6,116,Kate Maddox,8/14/2008 0:00,,8/14/2008 15:33,1,0,5,5,5,0,-9,0,0,0,5,5,Kate Maddox,subject's daughter,25
+180,1,6,117,Loralee Nguyen,8/15/2008 0:00,,8/15/2008 16:20,1,10,15,5,10,5,15,-9,0,5,10,10,Loralee Nguyen,patient,85
+181,1,6,118,Rosario Gonzaga-Camfield,8/21/2008 0:00,,8/21/2008 10:30,1,0,0,0,0,0,-9,0,0,0,0,0,Rosario Gonzaga-Camfield,Mrs. Sullivan,0
+182,1,6,119,Martha Davis,8/25/2008 0:00,,8/25/2008 16:00,1,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+183,1,6,120,Kate Maddox,8/26/2008 0:00,,8/26/2008 11:20,0,5,5,0,5,0,-9,0,0,0,10,5,Kate Maddox,son,30
+184,1,6,121,Kate Maddox,9/8/2008 0:00,,9/8/2008 15:40,1,10,15,5,10,5,15,-9,10,10,10,10,Kate Maddox,subject's wife,100
+185,1,6,122,Loralee Nguyen,9/10/2008 0:00,,9/10/2008 10:30,0,0,0,0,0,0,-9,0,0,0,0,0,Loralee Nguyen,"Roberto Valadez, PTA and pt's nurse",0
+186,1,6,123,Karen Rapp,9/17/2008 0:00,,9/17/2008 14:58,1,10,15,5,10,5,10,-9,5,10,10,10,Karen Rapp,patient,90
+187,1,6,124,Sandra Augustine,9/24/2008 0:00,,9/24/2008 10:30,0,0,0,0,0,0,-9,0,0,0,5,0,Sandra Augustine,This was done at bedside,5
+188,1,6,125,Loralee Nguyen,10/3/2008 0:00,,10/3/2008 8:20,1,10,10,5,5,5,10,-9,5,5,10,10,Loralee Nguyen,patient,75
+189,1,6,126,Kristi Malleck,10/8/2008 0:00,,10/8/2008 16:33,1,10,15,5,10,5,10,-9,10,10,10,5,Kristi Malleck,Spouse,90
+190,1,6,127,Karen Rapp,10/15/2008 0:00,,10/15/2008 9:57,1,10,15,5,10,5,15,-9,10,10,10,10,Jo Bell/ Karen Rapp,patient,100
+191,1,6,128,Kristi Malleck,10/22/2008 0:00,,10/22/2008 10:40,1,10,15,5,10,5,15,-9,10,10,10,10,Kristi Malleck,patient,100
+192,1,6,129,Karen McCarthy,10/28/2008 0:00,,10/28/2008 13:20,1,10,15,5,10,5,15,-9,10,10,10,10,Karen McCarthy,patient,100
+193,1,6,130,Loralee Nguyen,11/10/2008 0:00,,11/10/2008 14:00,1,10,15,5,10,5,15,-9,10,10,5,10,Loralee Nguyen,patient,95
+194,1,6,132,Kristi Malleck,12/4/2008 0:00,,12/4/2008 13:50,1,10,15,5,10,5,15,-9,10,10,10,10,Kristi Malleck,patient,100
+195,1,6,133,Loralee Nguyen,12/8/2008 0:00,,12/8/2008 10:21,1,10,15,5,10,5,15,-9,10,5,10,10,Loralee Nguyen,patient,95
+196,1,6,135,Kristi Malleck,1/6/2009 0:00,,1/6/2009 11:30,1,10,15,5,10,5,10,-9,5,10,10,10,Kristi Malleck,patient's son,90
+197,1,6,136,Kristi Malleck,1/6/2009 0:00,,1/6/2009 12:49,1,10,15,5,10,5,10,-9,0,10,10,10,Kristi Malleck,patient,85
+198,1,6,137,Kristi Malleck,1/13/2009 0:00,,1/13/2009 14:54,1,10,15,5,10,5,10,-9,10,10,5,10,Kristi Malleck,patient,90
+199,1,7,1,Martha Davis,5/23/2006 0:00,,5/22/2006 9:35,0,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,Patient,100
+200,1,7,3,Nichole Porche Taylor,8/16/2006 0:00,,8/16/2006 14:06,0,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,Subject,100
+201,1,7,4,Jo Bell,8/24/2006 0:00,,8/24/2006 10:20,0,10,15,5,10,5,15,-9,10,10,10,10,Akram Shhadeh,subject,100
+202,1,7,5,Nichole Porche Taylor,9/1/2006 0:00,,9/1/2006 13:24,0,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche Taylor,Subject,100
+203,1,7,7,Jo Bell,9/27/2006 0:00,,9/26/2006 10:25,0,10,15,5,10,5,15,-9,10,10,10,10,"Marcus Chacon, MD",Subject,100
+204,1,7,8,Matha Davis,9/26/2006 0:00,,9/26/2006 14:30,0,10,15,5,10,5,15,-9,5,10,10,10,Matha Davis,Patient,95
+205,1,7,10,Brown,10/14/2006 0:00,,10/14/2006 10:40,0,10,15,5,10,5,15,-9,10,10,10,10,Brown,Patient,100
+206,1,7,12,Martha Davis,10/5/2006 0:00,,10/5/2006 14:00,0,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,Patient,100
+207,1,7,13,Jo Bell,10/23/2006 0:00,,10/23/2006 10:46,0,10,15,5,10,5,15,-9,5,10,10,10,Jo Bell,Subject,95
+208,1,7,14,"Nichole Porche-Taylor, RN",1/29/2007 0:00,,1/26/2007 10:27,0,5,5,5,5,0,-9,5,0,5,10,10,"Nichole Porche-Taylor, RN",subject,50
+209,1,7,15,Jo Bell,11/16/2006 0:00,,11/16/2006 10:12,0,10,15,5,10,0,15,-9,10,10,10,10,Marcus Chacon,Subject,95
+210,1,7,18,Nichole Porche-Taylor,12/12/2006 0:00,,12/1/2006 10:03,0,10,10,5,10,5,-9,0,0,5,5,5,Nichole Porche-Taylor,Subject,55
+211,1,7,20,Nichole Porche-Taylor,12/11/2006 0:00,,12/8/2006 14:39,0,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,Subject,100
+212,1,7,21,Janice Alt,12/12/2006 0:00,,12/12/2006 13:57,0,10,15,5,10,5,10,-9,0,5,10,10,Janice Alt,Patient,80
+213,1,7,22,Martha Davis,12/5/2006 0:00,,12/4/2006 9:30,0,10,15,5,10,0,15,-9,10,10,10,10,Martha Davis,Patient and spouse,95
+214,1,7,23,Jo Bell,12/19/2006 0:00,,12/19/2006 15:54,0,0,0,0,0,0,-9,0,0,0,0,0,Marcus Chacon,Nursing Staff,0
+215,1,7,24,Martha Davis,1/8/2007 0:00,,1/8/2007 9:15,0,10,15,5,10,5,15,-9,10,10,10,10,Karen Johnston,Patient,100
+216,1,7,26,Nichole Porche-Taylor,2/19/2007 0:00,,2/19/2007 15:20,0,5,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,subject,95
+217,1,7,27,J Werner,2/13/2007 0:00,,2/13/2007 16:00,0,10,15,5,10,5,15,-9,10,10,10,10,Matt Jensen,Patient,100
+218,1,7,28,Marietta A. Manlulu,2/22/2007 0:00,,2/22/2007 11:00,0,0,0,0,0,0,-9,0,0,0,0,0,Marietta A. Manlulu,home health aide,0
+219,1,7,30,Jo Bell,3/7/2007 0:00,,3/7/2007 14:15,0,10,15,5,5,0,10,-9,5,5,10,10,Marcus Chacon,patient,75
+220,1,7,32,Marcus Chacon,3/15/2007 0:00,,3/15/2007 9:55,0,0,0,0,0,0,-9,0,0,0,0,0,Marcus Chacon,Physician,0
+221,1,7,33,Martha Davis,3/20/2007 0:00,,3/20/2007 10:00,0,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,Patient,100
+222,1,7,37,J. Werner,4/6/2007 0:00,,4/5/2007 17:00,0,10,10,5,5,0,-9,5,0,5,10,5,Hemmen,Patient,55
+223,1,7,38,Nichole Porche-Taylor,5/21/2007 0:00,,5/18/2007 10:06,0,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,daughter/ subject,100
+224,1,7,39,Jo Bell,5/21/2007 0:00,,5/21/2007 10:15,0,10,15,5,10,5,15,-9,10,10,10,10,Carol Greenwald,Patient,100
+225,1,7,40,Kate Maddox,6/7/2007 0:00,,6/7/2007 9:55,0,10,15,5,10,5,15,-9,10,10,10,10,Kate Maddox,subject,100
+226,1,7,43,Kate Maddox,6/6/2007 0:00,,6/6/2007 10:15,0,10,15,5,10,5,15,-9,10,10,10,10,Kate Maddox,Subject,100
+227,1,7,44,Nichole Porche-Taylor,6/15/2007 0:00,,6/15/2007 10:13,0,0,0,0,0,0,-9,0,0,0,0,0,Nichole Porche-Taylor,daughter,0
+228,1,7,45,Nichole Porche-Taylor,6/18/2007 0:00,,6/18/2007 10:43,0,5,15,5,10,0,15,-9,10,10,10,10,Nichole Porche-Taylor,subject,90
+229,1,7,46,R Gonzaga-Camfield,6/22/2007 0:00,,6/21/2007 11:00,0,10,15,5,10,5,15,-9,10,10,10,10,study coordinator,Patient,100
+230,1,7,47,Jo Bell,6/12/2007 0:00,,6/12/2007 10:40,0,10,15,5,10,5,15,-9,10,10,10,10,Marcus Chacon,Husband,100
+231,1,7,48,Nichole Porche-Taylor,6/26/2007 0:00,,6/26/2007 10:42,0,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,subject,100
+232,1,7,49,Nichole Porche-Taylor,6/29/2007 0:00,,6/29/2007 16:13,0,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,subject,100
+233,1,7,50,Nichole Porche-Taylor,8/1/2007 0:00,,7/11/2007 10:08,0,10,15,5,10,5,15,-9,10,10,10,10,Nichole Porche-Taylor,subject,100
+234,1,7,52,Janice Alt,6/27/2007 0:00,,6/27/2007 10:05,0,10,15,5,10,5,15,-9,10,10,0,10,Janice Alt,Patient,90
+235,1,7,54,Martha Davis,7/3/2007 0:00,,7/2/2007 10:30,0,5,15,5,10,5,15,-9,10,5,10,10,Martha Davis,Patient,90
+236,1,7,56,Jo Bell,7/9/2007 0:00,,7/9/2007 13:46,0,10,15,5,10,5,15,-9,10,10,10,10,Jo Bell,subject,100
+237,1,7,57,Martha Davis,8/9/2007 0:00,,8/9/2007 10:30,0,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+238,1,7,58,Janice Alt,8/28/2007 0:00,,8/28/2007 9:30,0,10,15,5,10,5,15,-9,10,10,10,10,Janice Alt,patient,100
+239,1,7,60,Loren Shen,8/30/2007 0:00,,8/30/2007 10:10,0,10,0,5,0,0,-9,5,0,0,0,0,Loren Shen,patient,20
+240,1,7,61,Kate Maddox,9/11/2007 0:00,,9/11/2007 11:25,0,10,15,5,10,5,15,-9,10,10,10,10,Kate Maddox,subject,100
+241,1,7,63,Anitha Abraham,9/28/2007 0:00,,9/28/2007 10:40,0,10,15,5,10,5,15,-9,10,10,10,10,Anitha Abraham,subject,100
+242,1,7,67,R. Gonzaga-Camfield,12/6/2007 0:00,,12/6/2007 14:00,0,5,10,5,5,0,-9,5,0,5,10,10,R. Gonzaga-Camfield,patient,55
+243,1,7,70,Doralene B Smith,12/19/2007 0:00,,12/19/2007 10:30,0,10,15,5,10,5,15,-9,10,10,10,10,Doralene B Smith,subject,100
+244,1,7,71,Martha Davis,12/21/2007 0:00,,12/18/2007 14:30,0,5,0,0,0,0,10,-9,0,0,10,10,Martha Davis,patient and wife,35
+245,1,7,73,Doralene B. Smith,1/24/2008 0:00,,1/24/2008 12:30,0,5,15,5,10,5,15,-9,10,10,10,10,Doralene B. Smith,subject,95
+246,1,7,74,Matha Davis,2/5/2008 0:00,,2/1/2008 14:30,0,10,15,5,10,5,15,-9,10,10,10,10,Matha Davis,patient and wife,100
+247,1,7,75,Doralene B Smith,2/20/2008 0:00,,2/20/2008 11:30,0,10,15,5,10,5,15,-9,10,10,10,10,Doralene B Smith,subject,100
+248,1,7,76,Kate Maddox,3/19/2008 0:00,,3/19/2008 10:00,1,5,10,5,5,0,10,-9,0,5,10,5,Kate Maddox,subject's wife,55
+249,1,7,78,Jo Bell,4/1/2008 0:00,,4/1/2008 10:45,0,10,15,5,10,5,15,-9,10,10,10,10,Jo Bell,subject,100
+250,1,7,79,Martha Davis,4/18/2008 0:00,,4/17/2008 10:00,0,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+251,1,7,81,Martha Davis,4/21/2008 0:00,,4/17/2008 10:30,0,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+252,1,7,83,Rosario Gonzaga-Camfield,4/25/2008 0:00,,4/25/2008 11:00,0,5,0,5,5,0,-9,0,0,5,10,10,Rosario Gonzaga-Camfield,subject- 006,40
+253,1,7,87,Janice Alt,4/30/2008 0:00,,4/30/2008 15:00,1,10,15,5,10,5,15,-9,0,10,10,10,Janice Alt,daughter,90
+254,1,7,89,Janet Wener,6/4/2008 0:00,,6/4/2008 19:30,1,10,15,5,10,5,15,-9,10,10,10,10,Teresa Rzesiewicz,Patient's wife,100
+255,1,7,90,Martha Davis,5/19/2008 0:00,,5/15/2008 11:45,0,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+256,1,7,91,Susan Alderman,6/17/2008 0:00,,6/17/2008 10:13,0,5,15,5,10,5,15,-9,10,5,5,5,Susan Alderman,patient,80
+257,1,7,98,Carol Greenwald,7/10/2008 0:00,,7/10/2008 10:05,0,10,15,5,10,5,15,-9,10,10,10,10,Carol Greenwald,patient,100
+258,1,7,100,Susan Alderman,7/29/2008 0:00,,7/29/2008 9:45,1,10,15,5,10,0,15,-9,0,10,10,10,"Susan Alderman,RN",brother,85
+259,1,7,101,Loralee Nguyen,8/8/2008 0:00,,8/8/2008 8:33,0,10,15,5,10,5,15,-9,10,10,10,5,Loralee Nguyen,patient,95
+260,1,7,105,Martha Davis,8/20/2008 0:00,,8/14/2008 11:30,0,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+261,1,7,106,R. Gonzaga-Camfield,8/7/2008 0:00,,8/5/2008 10:50,0,10,15,5,10,5,15,-9,10,10,10,10,R. Gonzaga-Camfield,subject,100
+262,1,7,107,Loralee Nguyen,10/13/2008 0:00,,8/22/2008 14:08,0,10,15,5,10,5,15,-9,10,10,10,10,Loralee Nguyen,patient,100
+263,1,7,108,Loralee Nguyen,9/18/2008 0:00,,9/5/2008 10:55,0,10,15,5,10,5,15,-9,10,10,10,10,Loralee Nguyen,paitent,100
+264,1,7,109,Martha Davis,9/5/2008 0:00,,9/4/2008 13:00,0,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+265,1,7,111,Kristi Malleck,9/18/2008 0:00,,9/18/2008 13:48,0,10,15,5,10,5,15,-9,10,10,10,10,Kristi Malleck,patient,100
+266,1,7,112,Kristi Malleck,9/18/2008 0:00,,9/18/2008 13:39,0,10,15,5,10,5,15,-9,10,10,10,10,Kristi Malleck,patient,100
+267,1,7,113,Janice Alt,10/9/2008 0:00,,10/9/2008 14:20,0,10,15,5,10,5,15,-9,10,10,10,10,Janice Alt,patient,100
+268,1,7,115,Rosario Gonzaga-Camfield,10/2/2008 0:00,,10/2/2008 11:00,0,10,15,5,10,5,15,-9,10,10,10,10,Rosario Gonzaga-Camfield,subject E-K,100
+269,1,7,116,Kate Maddox,10/16/2008 0:00,,10/16/2008 12:00,0,5,10,0,5,0,15,-9,0,5,10,5,Kate Maddox,gradn daughter,55
+270,1,7,117,Loralee Nguyen,9/23/2008 0:00,,9/23/2008 10:16,0,10,15,5,10,5,15,-9,10,10,10,10,Loralee Nguyen,patient,100
+271,1,7,119,Karen McCarthy,10/21/2008 0:00,,10/17/2008 14:00,0,10,15,5,10,5,15,-9,10,10,10,10,Martha Davis,patient,100
+272,1,7,120,Kate Maddox,11/3/2008 0:00,,10/31/2008 11:30,0,5,0,0,5,0,-9,0,0,0,5,5,Kate Maddox,subjects son,20
+273,1,7,121,Janice Alt,10/15/2008 0:00,,10/15/2008 10:45,0,10,15,5,10,5,15,-9,10,10,10,10,Janice Alt,patient,100
+274,1,7,122,Loralee Nguyen,10/20/2008 0:00,,10/20/2008 14:30,0,0,0,0,0,0,-9,0,0,0,0,0,Loralee Nguyen,physical therapy,0
+275,1,7,123,Teresa Rzesuwig,11/13/2008 0:00,,11/13/2008 9:29,0,10,5,5,5,5,10,-9,5,10,10,10,Gilda Tafreshi,patient,75
+276,1,7,124,Sundra Augustine,11/7/2008 0:00,,11/7/2008 14:00,0,5,5,0,0,0,-9,0,0,0,5,5,Sundra Augustine,done at bedside,20
+277,1,7,126,Kristi Malleck,12/2/2008 0:00,,12/2/2008 15:05,0,10,15,5,10,5,15,-9,10,10,10,10,Kristi Malleck,patient and spouse,100
+278,1,7,127,Teresa Rzeseiwug,11/19/2008 0:00,,11/19/2008 10:00,0,10,15,5,10,5,15,-9,10,10,10,10,Teresa Rzeseiwug,Judy B. Parker,100
+279,1,7,128,Kristi Malleck,12/1/2008 0:00,,12/1/2008 15:09,0,10,15,5,10,5,15,-9,10,10,10,10,Kristi Malleck,patient,100
+280,1,7,129,Karen McArtney,12/18/2008 0:00,,12/18/2008 10:12,0,10,15,5,10,5,15,-9,10,10,10,10,Karen McArtney,patient,100
+281,1,7,130,Loralee Nguyen,1/5/2009 0:00,,1/5/2009 14:21,0,10,15,5,10,5,15,-9,10,10,10,10,Loralee Nguyen,patient,100
+282,1,7,133,Loralee Nguyen,1/21/2009 0:00,,1/21/2009 9:12,0,10,15,5,10,5,15,-9,10,5,10,10,Loralee Nguyen,patient,95
+283,1,7,135,Kristi Malleck,2/23/2009 0:00,,2/23/2009 14:40,0,10,15,5,10,5,15,-9,5,10,10,10,Kristi Malleck,patient and patient's son,95
+284,1,7,136,Carold Greenwald,2/25/2009 0:00,,2/25/2009 12:40,0,10,15,5,10,5,15,-9,10,10,10,10,Carold Greenwald,patient,100
+285,1,7,137,Kristi Melleck,3/5/2009 0:00,"Pt is in hospital due to acute intertrochanteric right hip fracture, S/P intramedullary rodding procedure. This had affected her score greatly.",3/4/2009 15:46,0,10,0,5,0,0,-9,0,0,0,5,0,Kristi Melleck,patient's daughter,20
