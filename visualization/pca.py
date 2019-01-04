@@ -34,7 +34,7 @@ def do_pca(data, labels):
 
 
 if __name__ == '__main__':
-    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr('', 'is')
+    id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(0, 'all')
     # bi_df = bi_df.drop_duplicates()
     # mrs_df = mrs_df.loc[bi_df.index]
     do_pca(bi_df, mrs_df)
