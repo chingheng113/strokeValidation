@@ -41,6 +41,6 @@ if __name__ == '__main__':
     m = 'discharged_mrs'
     df_nbm = df[[n, b, m]]
     df_nbm = df_nbm[~((df_nbm.discharged_mrs == 0) & (df_nbm.Barthel_Total == 0))]
-    see_plot(df_nbm[[m, b]])
-    # bubble_plot(df_nbm[[m, b]], [m, b])
+    # see_plot(df_nbm[[m, b]])
+    bubble_plot(df_nbm[[m, b]], [m, b])
     # violin_plot(df_nbm[[m, b]])
