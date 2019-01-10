@@ -27,8 +27,8 @@ if __name__ == '__main__':
     result_bm = pd.merge(data_bi, data_mrs, how='right', on=['VisitID', 'PtID']).dropna()
     result = pd.merge(data_dm, result_bm, how='right', on=['PtID']).dropna()
 
-    result_dm = result.drop_duplicates(subset=['PtID'])
-    data_utils.save_dataframe_to_csv(result_dm[['PtID', 'onset_age', 'GENDER_TX']], 'TNK-dm')
+    result_dm = data_dm.drop_duplicates(subset=['PtID']).rename(columns={'PtID':'CASE_ID'})
+    data_utils.save_dataframe_to_csv(result_dm[['CASE_ID', 'onset_age', 'GENDER_TX']], 'TNK-dm')
 
     result = result.rename(columns={'PtID':'CASE_ID'}).drop(['VisitID_x', 'VisitID_y'], axis=1)
     data_utils.save_dataframe_to_csv(result, 'TNK')
