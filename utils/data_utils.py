@@ -45,7 +45,7 @@ def get_tsr(target, subtype):
     if subtype == 'is':
         df = get_ischemic('TSR_2017_cleaned.csv')
     elif subtype == 'he':
-        df = get_hemorrhagic('TSR_2017cleaned.csv')
+        df = get_hemorrhagic('TSR_2017_cleaned.csv')
     else:
         df = load_all('TSR_2017_cleaned.csv')
     if target != '':
@@ -68,22 +68,22 @@ def get_hemorrhagic(fn):
 
 
 def get_nih():
-    df = load_all('NIH.csv')
+    df = load_all('NIH_cleaned.csv')
     return df
 
 
 def get_alias():
-    df = load_all('ALIAS.csv')
+    df = load_all('ALIAS_cleaned.csv')
     return df
 
 
 def get_tnk():
-    df = load_all('TNK.csv')
+    df = load_all('TNK_cleaned.csv')
     return df
 
 
 def get_fast():
-    df = load_all('FAST.csv')
+    df = load_all('FAST_cleaned.csv')
     return df
 
 
@@ -172,6 +172,7 @@ def save_array_to_csv(file_name, title, patients_dic):
         for d in patients_dic.keys():
             p_dic = patients_dic[d]
             w.writerow(p_dic)
+
 
 if __name__ == '__main__':
 

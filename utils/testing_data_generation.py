@@ -3,6 +3,7 @@ import pandas as pd
 from utils import data_utils
 from random import randint
 
+
 def basic_filter(df):
     df = df[~(df['discharged_mrs'] == 6)]
     # df = df[~((df['Stairs'] == 10) & (df['NIHS_6aL_out'] == 4) & (df['NIHS_6bR_out'] == 4))]
@@ -19,10 +20,10 @@ def basic_filter(df):
     # df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_9_out'] != 3))]
     # df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_10_out'] != 2))]
     # df = df[~((df['NIHS_1a_out'] == 3) & (df['NIHS_11_out'] != 0))]
-    df = df[~((df['Barthel_Total'] == 0) & (df['discharged_mrs'] < 5))]
+    # df = df[~((df['Barthel_Total'] == 0) & (df['discharged_mrs'] < 5))]
     # https://www.ahajournals.org/doi/abs/10.1161/01.str.30.8.1538
-    df = df[~((df['Barthel_Total'] > 60) & (df['discharged_mrs'] > 3))]
-    df = df[~((df['Barthel_Total'] < 59) & (df['discharged_mrs'] < 4))]
+    # df = df[~((df['Barthel_Total'] > 60) & (df['discharged_mrs'] > 3))]
+    # df = df[~((df['Barthel_Total'] < 59) & (df['discharged_mrs'] < 4))]
     return df
 
 
@@ -131,7 +132,6 @@ if __name__ == '__main__':
     print(df_5.shape)
 
     mixed_0 = mix_bi_data(0, df_0, df_4, df_5)
-    data_utils.save_dataframe_to_csv(mixed_0, dataset+'_testing_0'+'_org')
     do_transform(dataset, 0, mixed_0)
 
     mixed_1 = mix_bi_data(1, df_1, df_4, df_5)
