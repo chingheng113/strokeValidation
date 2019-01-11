@@ -80,7 +80,7 @@ if __name__ == '__main__':
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
-    db, labels, core_samples_mask, n_clusters_ = dbscan_validation(bi_df_pca_unique, 0.5, 11)
+    db, labels, core_samples_mask, n_clusters_ = dbscan_validation(bi_df_pca_unique, 1.0, 3)
     data_labeled_all, data_labeled_unique = data_utils.label_data(bi_df, bi_df_pca_unique, labels)
 
     # data_utils.save_dataframe_to_csv(data_labeled_unique, 'dbscan_'+str(mrs))

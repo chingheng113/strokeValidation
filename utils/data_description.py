@@ -1,7 +1,7 @@
 from utils import data_utils
 import pandas as pd
 
-dataset = 'fast'
+dataset = 'tnk'
 if dataset == 'nih':
     df = data_utils.get_nih()
     df_dm = df.drop_duplicates(subset=['CASE_ID'])
@@ -33,11 +33,11 @@ print('number:', df_dm.shape[0])
 print('age:', round(df_dm.onset_age.mean(),1))
 print('sd:', round(df_dm.onset_age.std(),1))
 
-print('fe', df_dm[df_dm.GENDER_TX == 'F'].shape[0])
-print('fe%', round((df_dm[df_dm.GENDER_TX == 'F'].shape[0]/df_dm.shape[0]),3))
+print('fe', df_dm[df_dm.GENDER_TX == 2].shape[0])
+print('fe%', round((df_dm[df_dm.GENDER_TX == 2].shape[0]/df_dm.shape[0]),3))
 
-print('ma', df_dm[df_dm.GENDER_TX == "M"].shape[0])
-print('ma%', round((df_dm[df_dm.GENDER_TX == 'M'].shape[0]/df_dm.shape[0]),3))
+print('ma', df_dm[df_dm.GENDER_TX == 1].shape[0])
+print('ma%', round((df_dm[df_dm.GENDER_TX == 1].shape[0]/df_dm.shape[0]),3))
 
 print('--')
 print('mrs 0:', df[df.discharged_mrs == 0].shape[0])

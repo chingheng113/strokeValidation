@@ -77,7 +77,6 @@ def mix_bi_data(mrs, base, mix1, mix2):
     base_bi['label'] = 0
     test_data = pd.concat([base_bi, mix1_bi_label, mix2_bi_label], axis=0).drop_duplicates()
     # test_data = create_extreme_bi_outlier(test_data)
-    data_utils.save_dataframe_to_csv(test_data, 'testing_'+str(mrs))
     return test_data
 
 
@@ -97,12 +96,11 @@ def do_transform(dataset, mrs, test_data):
     test_bi_pca = pca.transform(test_bi.values)
     test_bi_pca_df = pd.DataFrame(data=test_bi_pca, index=test_data.index, columns=['pca_1', 'pca_2'])
     test_bi_pca_df['label'] = labels.values
-    data_utils.save_dataframe_to_csv(test_bi_pca_df, dataset+'_testing_'+str(mrs)+'_pca')
     return test_bi_pca_df
 
 
 if __name__ == '__main__':
-    dataset = 'alias'
+    dataset = 'nih'
     if dataset == 'nih':
         df = data_utils.get_nih()
     elif dataset == 'alias':
@@ -132,21 +130,33 @@ if __name__ == '__main__':
     print(df_5.shape)
 
     mixed_0 = mix_bi_data(0, df_0, df_4, df_5)
-    do_transform(dataset, 0, mixed_0)
+    data_utils.save_dataframe_to_csv(mixed_0, dataset + '_testing_0_org')
+    pca_0= do_transform(dataset, 0, mixed_0)
+    data_utils.save_dataframe_to_csv(pca_0, dataset + '_testing_0_pca')
 
     mixed_1 = mix_bi_data(1, df_1, df_4, df_5)
-    do_transform(dataset, 1, mixed_1)
+    data_utils.save_dataframe_to_csv(mixed_1, dataset + '_testing_1_org')
+    pca_1 = do_transform(dataset, 1, mixed_1)
+    data_utils.save_dataframe_to_csv(pca_1, dataset + '_testing_1_pca')
 
     mixed_2 = mix_bi_data(2, df_2, df_0, df_5)
-    do_transform(dataset, 2, mixed_2)
+    data_utils.save_dataframe_to_csv(mixed_2, dataset + '_testing_2_org')
+    pca_2 = do_transform(dataset, 2, mixed_2)
+    data_utils.save_dataframe_to_csv(pca_2, dataset + '_testing_2_pca')
 
     mixed_3 = mix_bi_data(3, df_3, df_0, df_5)
-    do_transform(dataset, 3, mixed_3)
+    data_utils.save_dataframe_to_csv(mixed_3, dataset + '_testing_3_org')
+    pca_3 = do_transform(dataset, 3, mixed_3)
+    data_utils.save_dataframe_to_csv(pca_3, dataset + '_testing_3_pca')
 
     mixed_4 = mix_bi_data(4, df_4, df_0, df_1)
-    do_transform(dataset, 4, mixed_4)
+    data_utils.save_dataframe_to_csv(mixed_4, dataset + '_testing_4_org')
+    pca_4 = do_transform(dataset, 4, mixed_4)
+    data_utils.save_dataframe_to_csv(pca_4, dataset + '_testing_4_pca')
 
     mixed_5 = mix_bi_data(5, df_5, df_0, df_1)
-    do_transform(dataset, 5, mixed_5)
+    data_utils.save_dataframe_to_csv(mixed_5, dataset + '_testing_5_org')
+    pca_5 = do_transform(dataset, 5, mixed_5)
+    data_utils.save_dataframe_to_csv(pca_5, dataset + '_testing_5_pca')
 
     print('done')
