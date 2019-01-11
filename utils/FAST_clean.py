@@ -7,8 +7,6 @@ if __name__ == '__main__':
     dm_df = data_utils.load_all('raw trial data'+os.sep+'FAST-MAG_demog.csv')
     dm_df = dm_df[['INVNO', 'PTNO', 'VISIT', 'AGE', 'SEX']]
     dm_df = dm_df.rename(columns={'AGE':'onset_age', 'SEX':'GENDER_TX'})
-    result_dm = dm_df.drop_duplicates(subset=['INVNO', 'PTNO']).rename(columns={'PTNO': 'CASE_ID'})
-    data_utils.save_dataframe_to_csv(result_dm[['CASE_ID', 'onset_age', 'GENDER_TX']], 'FAST-dm')
 
     data_bi = data_utils.load_all('raw trial data'+os.sep+'FAST-MAG_barthel.csv')
     data_bi = data_bi[['INVNO', 'PTNO', 'VISIT', 'BFEED', 'BCHRBED', 'BGROOM', 'BTOILET', 'BBATH', 'BWALK', 'BSTAIRS',
@@ -26,9 +24,12 @@ if __name__ == '__main__':
     data_mrs = data_mrs.dropna().astype('int')
     result_bm = pd.merge(data_bi, data_mrs, how='right', on=['INVNO', 'PTNO', 'VISIT']).dropna()
     result = pd.merge(dm_df, result_bm, how='right', on=['INVNO', 'PTNO']).dropna()
+    # result.insert(loc=0, column='CASE_ID', value=result.reset_index().index)
+    result.insert(loc=0, column='CASE_ID', value=result['INVNO'].apply(str)+'_'+result['PTNO'].apply(str))
 
+    result_dm = result.drop_duplicates(subset=['INVNO', 'PTNO']).rename(columns={'PTNO': 'CASE_ID'})
+    data_utils.save_dataframe_to_csv(result_dm[['CASE_ID', 'onset_age', 'GENDER_TX']], 'FAST-dm')
 
-    result.insert(loc=0, column='CASE_ID', value=result.reset_index().index)
     result = result.drop(['INVNO', 'PTNO', 'VISIT_x', 'VISIT_y'], axis=1)
     data_utils.save_dataframe_to_csv(result, 'FAST')
 

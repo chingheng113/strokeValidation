@@ -12,7 +12,7 @@ elif dataset == 'alias':
     df_dm = pd.merge(df_dm, df_nu, how='inner', on='CASE_ID').dropna()
 elif dataset == 'fast':
     df = data_utils.get_fast()
-    df_nu = df.drop_duplicates(subset=['CASE_ID'])
+    df_nu = df.drop_duplicates(subset=['CASE_ID']).drop(['onset_age', 'GENDER_TX'], axis=1)
     df_dm = data_utils.load_all('FAST-dm.csv')
     df_dm = pd.merge(df_dm, df_nu, how='inner', on='CASE_ID').dropna()
 elif dataset == 'tnk':

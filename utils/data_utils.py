@@ -43,11 +43,11 @@ def load_all(fn):
 
 def get_tsr(target, subtype):
     if subtype == 'is':
-        df = get_ischemic('TSR_2017_cleaned.csv')
+        df = get_ischemic('TSR_2017_lowess.csv')
     elif subtype == 'he':
-        df = get_hemorrhagic('TSR_2017_cleaned.csv')
+        df = get_hemorrhagic('TSR_2017_lowess.csv')
     else:
-        df = load_all('TSR_2017_cleaned.csv')
+        df = load_all('TSR_2017_lowess.csv')
     if target != '':
         df = df[df['discharged_mrs'] == target]
     id_df = df.iloc[:, 0:1]
@@ -68,22 +68,22 @@ def get_hemorrhagic(fn):
 
 
 def get_nih():
-    df = load_all('NIH_cleaned.csv')
+    df = load_all('NIH_lowess.csv')
     return df
 
 
 def get_alias():
-    df = load_all('ALIAS_cleaned.csv')
+    df = load_all('ALIAS_lowess.csv')
     return df
 
 
 def get_tnk():
-    df = load_all('TNK_cleaned.csv')
+    df = load_all('TNK_lowess.csv')
     return df
 
 
 def get_fast():
-    df = load_all('FAST_cleaned.csv')
+    df = load_all('FAST_lowess.csv')
     return df
 
 
