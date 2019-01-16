@@ -61,15 +61,15 @@ def plot_outlier_distribution(clf):
 
 
 if __name__ == '__main__':
-    mrs = 0
-    test_dataset = 'alias'
+    mrs = 3
+    test_dataset = 'nih'
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
     k_neighbors = 3
-    outliers_fraction = 0.13
+    outliers_fraction = 0.31
     clf = LocalOutlierFactor(n_neighbors=k_neighbors, contamination=outliers_fraction)
     labels = clf.fit_predict(bi_df_pca_unique)
     print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(bi_df_pca_unique, labels))
@@ -81,6 +81,6 @@ if __name__ == '__main__':
     plot_lof(bi_df_pca_unique, outliers_unique.index, mrs)
 
     clf_predict = LocalOutlierFactor(n_neighbors=k_neighbors, contamination=outliers_fraction, novelty=True).fit(bi_df_pca_unique.drop(['label'], axis=1))
-    # print(predict_new_points(test_dataset, clf_predict, mrs))
+    print(predict_new_points(test_dataset, clf_predict, mrs))
     plt.show()
     print('done')

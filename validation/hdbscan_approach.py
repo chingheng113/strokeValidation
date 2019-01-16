@@ -63,8 +63,8 @@ def predict_new_points(test_dataset, clusterer, mrs):
 
 
 if __name__ == '__main__':
-    mrs = 0
-    test_dataset = 'nih'
+    mrs = 3
+    test_dataset = 'fast'
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, '')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)

@@ -10,6 +10,8 @@ elif dataset == 'alias':
     df_nu = df.drop_duplicates(subset=['CASE_ID'])
     df_dm = data_utils.load_all('ALIAS-dm.csv')
     df_dm = pd.merge(df_dm, df_nu, how='inner', on='CASE_ID').dropna()
+    df_dm = df_dm.rename(columns={'onset_age_x':'onset_age', 'GENDER_TX_x':'GENDER_TX', 'discharged_mrs_x':'discharged_mrs',
+                          'Barthel_Total_x':'Barthel_Total'})
 elif dataset == 'fast':
     df = data_utils.get_fast()
     df_nu = df.drop_duplicates(subset=['CASE_ID']).drop(['onset_age', 'GENDER_TX'], axis=1)
@@ -22,7 +24,7 @@ elif dataset == 'tnk':
     df_dm = pd.merge(df_dm, df_nu, how='inner', on='CASE_ID').dropna()
     print('')
 elif dataset == 'tsr':
-    df = data_utils.load_all('TSR_2017_cleaned.csv')
+    df = data_utils.load_all('TSR_2017_lowess.csv')
     df['id'] = df.CASE_ID.str.split('-').str[1]
     df_dm = df.drop_duplicates(subset=['id'])
 else:

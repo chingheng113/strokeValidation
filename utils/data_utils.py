@@ -88,7 +88,7 @@ def get_fast():
 
 
 def get_test_transformed(dataset, mrs):
-    df = load_all(dataset+'_testing_'+str(mrs)+'_pca.csv')
+    df = load_all(os.sep+'test_data'+os.sep+dataset+'_testing_'+str(mrs)+'_pca.csv')
     return df
 
 
@@ -149,7 +149,7 @@ def get_performance(cm):
     FDR = FP/(TP+FP)
     # Overall accuracy
     ACC = (TP+TN)/(TP+FP+FN+TN)
-    return TPR, TNR, ACC
+    return round(TPR, 3), round(TNR, 3), round(ACC,3)
 
 
 def get_confusionmatrix(label, prediction):
