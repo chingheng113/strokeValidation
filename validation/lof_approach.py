@@ -2,22 +2,16 @@ import numpy as np
 import pandas as pd
 from utils import data_utils
 import matplotlib.pyplot as plt
+from matplotlib import mlab
 from sklearn.neighbors import LocalOutlierFactor
 import seaborn as sns
-from sklearn import metrics
-
-
-# def lof_validation(X, outliers_fraction):
-#     clf = LocalOutlierFactor(n_neighbors=11, contamination=outliers_fraction)
-#     return clf
 
 
 def make_score_label(X, clf, cutoff):
     s_label = pd.DataFrame(index=X.index, columns=['label'])
     clf.fit_predict(X)
-    X_scores = clf.negative_outlier_factor_
-    threshold = pd.Series(X_scores).quantile(cutoff) # the larger the score the more outlier-like the point.
-    outlier_inx = np.where(X_scores > threshold)[0]
+    X_scores = -clf.negative_outlier_factor_
+    outlier_inx = np.where(X_scores > cutoff)[0]
     s_label.iloc[outlier_inx] = -1
     s_label.fillna(0, inplace=True)
     return s_label.values
@@ -34,11 +28,11 @@ def plot_lof(X, outliers_inx, n):
     legend.legendHandles[1]._sizes = [20]
 
 
-def predict_new_points(test_dataset, clf, mrs):
+def predict_new_points(bi_df_pca_unique, test_dataset, mrs, cutoff):
     test_bi_pca_all = data_utils.get_test_transformed(test_dataset, mrs)
-    # test_bi_pca_all = test_bi_pca_all.iloc[65:70,]
-    labels = test_bi_pca_all[['label']]
+    true_labels = test_bi_pca_all[['label']]
     test_bi_pca = test_bi_pca_all.drop(['label'], axis=1)
+    train_bi_pca = bi_df_pca_unique.drop(['label'], axis=1)
 
     # see what happened
     ot = test_bi_pca_all[test_bi_pca_all['label'] == -1]
@@ -49,38 +43,59 @@ def predict_new_points(test_dataset, clf, mrs):
     legend.legendHandles[2]._sizes = [30]
     legend.legendHandles[3]._sizes = [40]
     #
-    test_labels = clf._predict(test_bi_pca)
-    test_labels [test_labels > -1] = 0
-    sensitivity, specificity, accuracy = data_utils.show_performance(labels, test_labels)
+
+
+    clf_predict = LocalOutlierFactor(n_neighbors=k_neighbors, contamination=outliers_fraction, novelty=True)
+    clf_predict.fit(train_bi_pca)
+    outlier_scores = -clf_predict.score_samples(test_bi_pca)
+    test_labels = (outlier_scores > cutoff).astype(int)*-1
+    sensitivity, specificity, accuracy = data_utils.show_performance(true_labels, test_labels)
     return sensitivity, specificity, accuracy
 
 
-def plot_outlier_distribution(clf):
-    sns.distplot(clf.negative_outlier_factor_[np.isfinite(clf.negative_outlier_factor_)], rug=True)
-    plt.show()
+def score_cutoff(X, clf):
+    clf.fit_predict(X)
+    X_scores = np.sort(-clf.negative_outlier_factor_)
+
+    # Percentile values plot
+    # p = np.array([0, 25, 50, 75, 90, 95])
+    # perc = mlab.prctile(X_scores, p=p)
+    # plt.plot(X_scores)
+    # plt.plot((len(X_scores)-1) * p/100., perc, 'ro') # Place red dots on the percentiles
+    # plt.xticks((len(X_scores)-1) * p/100., map(str, p)) # Set tick locations and labels
+    # plt.xlabel('Percentile')
+    # plt.ylabel('Outlier Scores')
+    # plt.title('mRS-3')
+    #
+    threshold = pd.Series(X_scores).quantile(0.85)
+    # 0:95, 1:90, 2:90, 3:90, 4:90, 5:85
+    plt.annotate(
+        'Elbow point',
+        xy=(1104, threshold), arrowprops=dict(arrowstyle='->'), xytext=(900, threshold+0.09))
+    print(threshold)
+    return threshold
 
 
 if __name__ == '__main__':
-    mrs = 3
-    test_dataset = 'nih'
+    mrs = 5
+    test_dataset = 'tnk'
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'is')
     bi_df_unique = bi_df.drop_duplicates()
     bi_df_pca, pca = data_utils.pca_reduction(bi_df)
     bi_df_pca_unique = bi_df_pca.drop_duplicates()
 
-    k_neighbors = 3
-    outliers_fraction = 0.31
+    k_neighbors = 10
+    outliers_fraction = 0.01
+    # Training
     clf = LocalOutlierFactor(n_neighbors=k_neighbors, contamination=outliers_fraction)
-    labels = clf.fit_predict(bi_df_pca_unique)
-    print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(bi_df_pca_unique, labels))
-
-    # label = make_score_label(bi_df_pca_unique, clf, 0.2)
-    # plot_outlier_distribution(clf)
+    # determine cutoff
+    cutoff = score_cutoff(bi_df_pca_unique, clf)
+    #
+    labels = make_score_label(bi_df_pca_unique, clf, cutoff)
     data_labeled_all, data_labeled_unique = data_utils.label_data(bi_df, bi_df_pca_unique, labels)
     outliers_unique, outliers_all = data_utils.outlier_filter(data_labeled_all, data_labeled_unique)
     plot_lof(bi_df_pca_unique, outliers_unique.index, mrs)
 
-    clf_predict = LocalOutlierFactor(n_neighbors=k_neighbors, contamination=outliers_fraction, novelty=True).fit(bi_df_pca_unique.drop(['label'], axis=1))
-    print(predict_new_points(test_dataset, clf_predict, mrs))
+    print(predict_new_points(bi_df_pca_unique, test_dataset, mrs, cutoff))
     plt.show()
     print('done')

@@ -1,7 +1,7 @@
 from utils import data_utils
 import pandas as pd
 
-dataset = 'tnk'
+dataset = 'tsr'
 if dataset == 'nih':
     df = data_utils.get_nih()
     df_dm = df.drop_duplicates(subset=['CASE_ID'])

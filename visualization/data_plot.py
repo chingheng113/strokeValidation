@@ -14,16 +14,15 @@ def bubble_plot(data, group_names):
         x.append(key[0])
         y.append(key[1])
     plt.title('Bubble plot of TSR (mRS vs. BI)')
-    plt.scatter(x, y, s=data_size, alpha=.5)
-    plt.xlabel(group_names[0])
-    plt.ylabel(group_names[1])
-    plt.show()
+    plt.scatter(x, y, s=data_size/5, alpha=.5)
+    plt.xlabel('mRS degree')
+    plt.ylabel('Total Balthel index')
 
 
 def violin_plot(data):
     sns.violinplot(data.iloc[: ,0], data.iloc[:, 1], orient='v')
     sns.despine()
-    plt.show()
+
 
 
 def see_plot(data):
@@ -31,10 +30,10 @@ def see_plot(data):
     # bi_totoal = data.iloc[: ,1]
     # plt.hist(bi_totoal, bins='auto')
     # data["Barthel_Total"].apply(np.log).hist()
-    plt.show()
 
 if __name__ == '__main__':
-    df = data_utils.get_ischemic('TSR_2017_lowess.csv')
+    df = data_utils.get_ischemic('TSR_2017.csv')
+    df = df[df.discharged_mrs != 6]
     # df = data_utils.get_nih()
     n = 'NIHSS_Total'
     b = 'Barthel_Total'
@@ -44,3 +43,4 @@ if __name__ == '__main__':
     # see_plot(df_nbm[[m, b]])
     bubble_plot(df_nbm[[m, b]], [m, b])
     # violin_plot(df_nbm[[m, b]])
+    plt.show()
