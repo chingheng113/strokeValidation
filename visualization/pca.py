@@ -60,23 +60,31 @@ def plot_tnk(mrs):
     plt.scatter(noot[['pca_1']], noot[['pca_2']], linewidth=0, c='blue', marker='X')
 
 
+def plot_all(data, labels):
+    pca = decomposition.PCA(n_components=10)
+    pca.fit(data)
+    transformed_data = pca.transform(data)
+    plt.scatter(transformed_data[:, 0], transformed_data[:, 1], c=labels.values.ravel(),
+                cmap=plt.cm.nipy_spectral, s=50, alpha=0.5, marker='.', label='TSR data points')
+
 if __name__ == '__main__':
     mrs = 5
+    #
     id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr(mrs, 'all')
-    # bi_df = bi_df.drop_duplicates()
-    # mrs_df = mrs_df.loc[bi_df.index]
     do_pca(bi_df, mrs_df)
     plot_nih(mrs)
     plot_alias(mrs)
     plot_fast(mrs)
     plot_tnk(mrs)
-
     legend = plt.legend(loc='upper left')
     legend.legendHandles[0]._sizes = [10]
     legend.legendHandles[1]._sizes = [20]
-
+    plt.title('mRS = ' + str(mrs))
+    #
+    # id_df, bi_df, mrs_df, nih_df = data_utils.get_tsr('', 'all')
+    # plot_all(bi_df, mrs_df)
 
     plt.xlabel('component 1')
     plt.ylabel('component 2')
-    plt.title('mRS = '+ str(mrs))
+
     plt.show()
